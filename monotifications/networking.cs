@@ -195,7 +195,7 @@ namespace monotifications
 			Console.WriteLine ("Received: {0}", receiveString);
 			messageReceived = true;
 			
-			listen(); // Wait for next message...
+			listen(); // Wait for next message...	
 		}
 		
 		public void listen ()
@@ -222,7 +222,7 @@ namespace monotifications
 		
 		#endregion	
 		
-		public static void Main (String[] args)
+		public static void _Main (String[] args)
 		{
 			networking net = new networking ();
 			
@@ -262,3 +262,4 @@ namespace monotifications
 }
 
 #endregion
+
