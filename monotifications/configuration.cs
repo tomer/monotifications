@@ -88,7 +88,7 @@ namespace monotifications
 			}
 		}
 		
-		public static void Main (String[] args)
+		public static void __Main (String[] args)
 		{
 			configuration config = new configuration ();
 			//config["grp1"]["key1"] = "foo!";
