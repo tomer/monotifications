@@ -77,18 +77,18 @@ namespace monotifications
 //Console.WriteLine("broadcast_string contains {0}", broadcast_string);
 //send_to_address = IPAddress.Parse(broadcast_string);
 
-			Console.WriteLine ("Enter text to broadcast via UDP.");
+			//Console.WriteLine ("Enter text to broadcast via UDP.");
 			//string 
-			text_to_send = Console.ReadLine ();
+			//text_to_send = Console.ReadLine ();
+			
+			
 // the socket object must have an array of bytes to send.
 // this loads the string entered by the user into an array of bytes.
 			//byte[] send_buffer = System.Text.Encoding.ASCII.GetBytes (text_to_send);
 			byte[] send_buffer = System.Text.Encoding.UTF8.GetBytes (text_to_send);
 			
 // Remind the user of where this is going.
-			Console.WriteLine ("sending to address: {0} port: {1}",
-				sending_end_point.Address,
-				sending_end_point.Port);
+			//Console.WriteLine ("sending to address: {0} port: {1}",			sending_end_point.Address,				sending_end_point.Port);
 			try {
 				sending_socket.SendTo (send_buffer, sending_end_point);
 			} catch (Exception send_exception) {
@@ -96,7 +96,7 @@ namespace monotifications
 				Console.WriteLine (" Exception {0}", send_exception.Message);
 			}
 			if (exception_thrown == false) {
-				Console.WriteLine ("Message has been sent to the broadcast address");
+				//Console.WriteLine ("Message has been sent to the broadcast address");
 			} else {
 				exception_thrown = false;
 				Console.WriteLine ("The exception indicates the message was not sent.");
@@ -140,7 +140,7 @@ namespace monotifications
 			s.e = e;
 			s.u = u;
 			
-			Console.WriteLine ("listening for messages");
+			//Console.WriteLine ("listening for messages");
 			u.BeginReceive (new AsyncCallback (ReceiveCallback), s);
 		}
 		

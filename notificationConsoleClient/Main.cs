@@ -14,7 +14,7 @@ namespace notificationConsoleClient
 		public notificationConsoleClient ()
 		{
 						
-			this.config ["client"] ["recipientPort"] = "7777";
+			//this.config ["client"] ["recipientPort"] = "7777";
 		}
 		
 		public void startListener ()
@@ -32,14 +32,13 @@ namespace notificationConsoleClient
 		
 		private void msgNotify (string content)
 		{
-			if (content [0] == '<')
-				Console.WriteLine ("New text message: {0}, content");
-			else {			
+			if (content.StartsWith ("<")) {	
 				Message msg = new Message ();
 				msg.parse (content);
 			
-				Console.WriteLine ("New message receivd: {0}", msg ["content"]);
+				Console.WriteLine (string.Format("New message receivd: {0}", msg ["content"]));
 			}
+			else 	Console.WriteLine (string.Format("New text message: {0}", content));
 		}
 		
 		~notificationConsoleClient ()
@@ -50,6 +49,7 @@ namespace notificationConsoleClient
 		public void shutdown ()
 		{
 			Console.WriteLine ("Shutting down");
+			this.network.stopListener();
 			this.config.save ();
 		}
 		
@@ -58,10 +58,39 @@ namespace notificationConsoleClient
 			string cmd = "";
 			while (cmd != "exit") {
 				Console.Write ("> ");
-				cmd = Console.ReadLine();
+				cmd = Console.ReadLine ();
 				
 				switch (cmd) {
-					case "exit": shutdown(); break;
+				case "quit":
+				case "bye":
+				case "exit":
+					cmd = "exit";
+					this.shutdown ();
+					break;
+				case "send":
+					string destIP;
+					string port;
+					string content;
+					Console.Write ("Destination IP: ");
+					destIP = Console.ReadLine ();
+					Console.Write ("Destination port: ");
+					port = Console.ReadLine ();					
+					Console.Write ("Content: ");
+					content = Console.ReadLine ();
+					
+					network.talker (destIP, int.Parse (port), content);
+					
+					break;
+				case "":
+					break;
+				case "?":
+				case "help":
+					Console.WriteLine ("type \"send\" to send a message.");
+					Console.WriteLine ("Type \"exit\" to shutdown application.");
+					break;
+				default:
+					Console.WriteLine("Invalid command. Type \"?\" for help.");
+					break;
 				}
 				
 			}
@@ -74,7 +103,6 @@ namespace notificationConsoleClient
 			
 			client.startListener ();
 			client.console ();
-			
 		}
 	}
 }

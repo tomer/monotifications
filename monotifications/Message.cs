@@ -14,7 +14,9 @@ namespace monotifications
 		
 		public void parse (string s)
 		{
-			this.storage.LoadXml (s);	
+			if (s.StartsWith("<")) this.storage.LoadXml (s);	
+			else return;
+				
 		}
 		
 		public string this [string index] {
