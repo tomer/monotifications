@@ -138,7 +138,7 @@ namespace monotifications
 			u.BeginReceive (new AsyncCallback (ReceiveCallback), s);
 		}
 				
-		private static void Main(String[] args)
+		private static void _Main(String[] args)
 		{
 			networking net = new networking ();
 			
