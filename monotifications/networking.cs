@@ -8,6 +8,8 @@ namespace monotifications
 	public class networking
 	{
 		private int _listenPort;
+		private Boolean _listen;
+		
 		public delegate void ReceiverDelegate(string text);
 		private ReceiverDelegate ReceiverCallback;
 		
@@ -116,9 +118,11 @@ namespace monotifications
 			
 			//Console.WriteLine ("Received: {0}", receiveString);
 			//ShowReceivedMessage(receiveString);
-			ReceiverCallback(receiveString);
 			
-			listen (); // Wait for next message...	
+			if (_listen) {
+				ReceiverCallback (receiveString);
+				listen (); // Wait for next message...	
+			}
 		}
 		
 		public void DefaultReceiveAction(string text) {
@@ -126,7 +130,9 @@ namespace monotifications
 		}
 		
 		public void listen ()
-		{			
+		{	
+			_listen = true;
+			
 			IPEndPoint e = new IPEndPoint (IPAddress.Any, _listenPort);
 			UdpClient u = new UdpClient (e);
 			
@@ -136,6 +142,12 @@ namespace monotifications
 			
 			Console.WriteLine ("listening for messages");
 			u.BeginReceive (new AsyncCallback (ReceiveCallback), s);
+		}
+		
+		public void stopListener ()
+		{
+			_listen = false;
+			talker("127.0.0.1", listenPort, "shutdown now");
 		}
 				
 		private static void _Main(String[] args)

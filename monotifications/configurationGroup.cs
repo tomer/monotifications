@@ -71,7 +71,6 @@ namespace monotifications
 			}
 		}
 				
-		
 		/*		public string this [string grp, string key] {
 			get {
 				return storage[grp][key];

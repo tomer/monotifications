@@ -22,7 +22,7 @@ namespace monotifications
 		public configuration (string filename)
 		{
 			this.filename = filename;
-			this.load();
+			this.load ();
 		}
 		
 		public  configurationGroup this [string key]{
