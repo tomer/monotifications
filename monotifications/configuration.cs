@@ -1,17 +1,28 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 
 namespace monotifications
 {
 	public class configuration
 	{
+		private string filename;
+		
 		private Dictionary <string,configurationGroup> storage = new Dictionary<string, configurationGroup>();
-				public configuration ()
+
+		public configuration () : this("config.ini")
 		{
 		}
 		
-		public configuration(string filename) {
-			//TODO
+		~configuration() {
+			Console.WriteLine("saving configuration before exit");
+			save();
+		}
+		
+		public configuration (string filename)
+		{
+			this.filename = filename;
+			this.load();
 		}
 		
 		public  configurationGroup this [string key]{
@@ -50,12 +61,27 @@ namespace monotifications
 		
 		public void load ()
 		{
-			//TODO
+			FileInfo finfo = new FileInfo (filename);
+			if (finfo.Exists) {
+				// create reader & open file
+				StreamReader streamReader = new StreamReader (filename);
+
+				// read file
+				string text = streamReader.ReadToEnd ();
+				// close the stream
+				streamReader.Close ();
+			
+				this.parse (text);
+			} else Console.WriteLine ("File {0} is inaccessible.", filename);
 		}
 		
 		public void save ()
 		{
-			//TODO
+			StreamWriter streamWriter = new StreamWriter (filename);
+			string text = dump ();
+			
+			streamWriter.Write (text);
+			streamWriter.Close ();
 		}
 		
 		
@@ -91,6 +117,7 @@ namespace monotifications
 		public static void __Main (String[] args)
 		{
 			configuration config = new configuration ();
+			/*
 			//config["grp1"]["key1"] = "foo!";
 			
 			//configurationGroup g = new configurationGroup ();
@@ -122,13 +149,15 @@ this is a keyword     =     and this is a value ; and just a dummy comment
 			config ["foo"] ["foo1"] = "val1";
 			config ["foo"] ["foo3"] = "val3";
 			config ["foo"] ["foo2"] = "val2";
+			*/
 			Console.WriteLine (config);
 			
+			/*
 			
 			configuration config2 = new configuration ();
 			config2.parse (config.ToString ());
 						
-			Console.WriteLine (config2);
+			Console.WriteLine (config2);*/
 			
 		}
 	}
