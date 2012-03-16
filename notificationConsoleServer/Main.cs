@@ -2,9 +2,17 @@ using System;
 
 namespace notificationConsoleServer
 {
-	class MainClass
+	class notificationConsoleServer
 	{
-		public static void Main (string[] args)
+		private monotifications.notificationClient client = new notificationServerReceiver();
+		
+		public void startListener ()
+		{
+			
+			client.startListener ();	
+		}
+		
+		public static void _Main (string[] args)
 		{
 			Console.WriteLine ("Hello World!");
 		}

@@ -27,7 +27,7 @@ Global
 		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = notificationConsoleClient\notificationConsoleClient.csproj
+		StartupItem = notificationConsoleServer\notificationConsoleServer.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None

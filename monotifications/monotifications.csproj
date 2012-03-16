@@ -41,6 +41,7 @@
     <Compile Include="Message.cs" />
     <Compile Include="Messenger.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="notificationClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net" />

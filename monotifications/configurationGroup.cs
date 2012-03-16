@@ -64,7 +64,7 @@ namespace monotifications
 		public string this [string key] {
 			get {
 				if (storage.ContainsKey(key)) return storage [key];
-				else return null;
+				else return null; // or */ "";
 			}
 			set {
 				storage [key] = value;	

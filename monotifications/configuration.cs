@@ -15,7 +15,7 @@ namespace monotifications
 		}
 		
 		~configuration() {
-			Console.WriteLine("saving configuration before exit");
+			//Console.WriteLine("saving configuration before exit");
 			save();
 		}
 		
@@ -59,7 +59,11 @@ namespace monotifications
 			return str;
 		}
 		
-		public void load ()
+		public void load() {
+			this.load(this.filename);
+		}
+		
+		public void load (string filename)
 		{
 			FileInfo finfo = new FileInfo (filename);
 			if (finfo.Exists) {
@@ -72,16 +76,31 @@ namespace monotifications
 				streamReader.Close ();
 			
 				this.parse (text);
-			} else Console.WriteLine ("File {0} is inaccessible.", filename);
+			} else
+				Console.WriteLine ("File {0} is inaccessible.", filename);
 		}
 		
 		public void save ()
 		{
-			StreamWriter streamWriter = new StreamWriter (filename);
-			string text = dump ();
-			
-			streamWriter.Write (text);
-			streamWriter.Close ();
+			this.save (this.filename);
+		}
+		
+		public void save (string filename)
+		{
+			try {
+				FileInfo finfo = new FileInfo (filename);
+				if (finfo.Exists) {
+					Console.WriteLine("File {0} exists. Deleting file...", filename);
+					finfo.Delete ();
+				}
+				
+				string text = dump ();		
+				StreamWriter streamWriter = new StreamWriter (filename);
+				streamWriter.Write (text);
+				streamWriter.Close ();
+			} catch (Exception e) {
+				Console.WriteLine ("Failed: " + e.ToString ());
+			}
 		}
 		
 		
@@ -151,7 +170,7 @@ this is a keyword     =     and this is a value ; and just a dummy comment
 			config ["foo"] ["foo2"] = "val2";
 			*/
 			Console.WriteLine (config);
-			
+			config.save ();			
 			/*
 			
 			configuration config2 = new configuration ();

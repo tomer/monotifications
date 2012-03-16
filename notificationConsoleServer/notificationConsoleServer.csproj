@@ -37,6 +37,13 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="notificationServerReceiver.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\monotifications\monotifications.csproj">
+      <Project>{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}</Project>
+      <Name>monotifications</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

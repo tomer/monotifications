@@ -4,7 +4,7 @@ namespace monotification
 {
 	class MainClass
 	{
-		public static void Main (string[] args)
+		public static void ___Main (string[] args)
 		{
 			Console.WriteLine ("Hello World!");
 		}
