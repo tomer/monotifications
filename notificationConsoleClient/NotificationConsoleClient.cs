@@ -27,16 +27,12 @@ namespace notificationConsoleClient
 		
 		public void registerOnServer ()
 		{
-			Message m = new Message ();
-			m ["content"] = "register";
-			m ["type"] = "-1"; // Internal commands channel
-			m ["myPort"] = config ["client"] ["recipientPort"];
-			m ["myAddress"] = config ["client"] ["recipientAddress"];
-			m ["subscription"] = config ["client"] ["subscription"];			
-			
 			if (config ["server"] ["serverAddress"] != "" && config ["server"] ["serverPort"] != "") {
-				network.talker (config ["server"] ["serverAddress"], int.Parse (config ["client"] ["recipientPort"]), m.ToString ());
 				Console.WriteLine ("Registering on {0}", config ["server"] ["serverAddress"]);
+				registerOnServer (config ["server"] ["serverAddress"],
+					config ["client"] ["recipientAddress"], 
+					config ["client"] ["recipientPort"], 
+					config ["client"] ["subscription"]);
 			} else
 				Console.WriteLine ("No server defined");
 		}
@@ -67,7 +63,7 @@ namespace notificationConsoleClient
 				Console.Write ("> ");
 				cmd = Console.ReadLine ();
 				
-				switch (cmd) {
+				switch (cmd.ToLower ()) {
 				case "quit":
 				case "bye":
 				case "exit":
@@ -93,7 +89,7 @@ namespace notificationConsoleClient
 					
 					break;
 				case "save": 
-					this.config.save ();
+					this.config.Save ();
 					break;
 					
 				case "":

@@ -1,28 +1,29 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace monotifications
 {
-	public class configuration
+	public class Configuration
 	{
-		private string filename;
-		
+		private string filename = "config.ini";
+		private bool saveScheduled = false;
 		private Dictionary <string,configurationGroup> storage = new Dictionary<string, configurationGroup>();
 
-		public configuration () : this("config.ini")
+		public Configuration () : this("config.ini")
 		{
 		}
 		
-		~configuration() {
+		~Configuration() {
 			//Console.WriteLine("saving configuration before exit");
-			save();
+			Save();
 		}
 		
-		public configuration (string filename)
+		public Configuration (string filename)
 		{
 			this.filename = filename;
-			this.load ();
+			this.Load ();
 		}
 		
 		public  configurationGroup this [string key]{
@@ -44,10 +45,10 @@ namespace monotifications
 		
 		public override string ToString ()
 		{
-			return dump ();
+			return Dump ();
 		}
 		
-		public string dump ()
+		public string Dump ()
 		{
 			string str = "";
 			
@@ -59,11 +60,11 @@ namespace monotifications
 			return str;
 		}
 		
-		public void load() {
-			this.load(this.filename);
+		public void Load() {
+			this.Load(this.filename);
 		}
 		
-		public void load (string filename)
+		public void Load (string filename)
 		{
 			FileInfo finfo = new FileInfo (filename);
 			if (finfo.Exists) {
@@ -75,17 +76,33 @@ namespace monotifications
 				// close the stream
 				streamReader.Close ();
 			
-				this.parse (text);
+				this.Parse (text);
 			} else
 				Console.WriteLine ("File {0} is inaccessible.", filename);
 		}
 		
-		public void save ()
+		private Timer saveScheduler;
+		
+		public void TriggerSave ()
 		{
-			this.save (this.filename);
+			if (saveScheduled == false) {
+				saveScheduled = true;
+				saveScheduler = new Timer (SaveTrigger, null, 1000 * 25, Timeout.Infinite);
+			}
 		}
 		
-		public void save (string filename)
+		private void SaveTrigger (object state)
+		{
+			saveScheduled = false;
+			this.Save();
+		}
+		
+		public void Save ()
+		{
+			this.Save (this.filename);
+		}
+		
+		public void Save (string filename)
 		{
 			try {
 				FileInfo finfo = new FileInfo (filename);
@@ -94,7 +111,7 @@ namespace monotifications
 					finfo.Delete ();
 				}
 				
-				string text = dump ();		
+				string text = Dump ();		
 				StreamWriter streamWriter = new StreamWriter (filename);
 				streamWriter.Write (text);
 				streamWriter.Close ();
@@ -104,7 +121,7 @@ namespace monotifications
 		}
 		
 		
-		public void parse (string input)
+		public void Parse (string input)
 		{
 			string container = "";
 			foreach (String line in input.Split('\n')) {
@@ -135,7 +152,7 @@ namespace monotifications
 		
 		public static void __Main (String[] args)
 		{
-			configuration config = new configuration ();
+			Configuration config = new Configuration ();
 			/*
 			//config["grp1"]["key1"] = "foo!";
 			
@@ -153,7 +170,7 @@ namespace monotifications
 			Console.WriteLine ("{0}", config ["flinstones"] ["foo"]);
 			//config ["flinstones"] ["barney"] = "Betty";
 			
-			config.parse (@";This is a sample configuration file
+			config.Parse (@";This is a sample configuration file
 key1 = val1
 key2 = val2
 [group]
@@ -170,7 +187,7 @@ this is a keyword     =     and this is a value ; and just a dummy comment
 			config ["foo"] ["foo2"] = "val2";
 			*/
 			Console.WriteLine (config);
-			config.save ();			
+			config.Save ();			
 			/*
 			
 			configuration config2 = new configuration ();
