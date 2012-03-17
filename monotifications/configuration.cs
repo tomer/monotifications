@@ -142,15 +142,33 @@ namespace monotifications
 						key = key.Trim ();
 						val = val.Trim ();
 											
-						this[container][key] = val;
+						this [container] [key] = val;
 					} else if (line.Contains ("[") && line.Contains ("]")) {
-						container = line.Substring(line.IndexOf("[")+1,line.IndexOf("]")-1);
+						container = line.Substring (line.IndexOf ("[") + 1, line.IndexOf ("]") - 1);
 					}
 				}
 			}
 		}
 		
-		public static void __Main (String[] args)
+		// This property will return the top level keys associated with the array
+		public string[] Keys {
+			get {
+				
+				List<string > keys = new List<string> ();
+				foreach (KeyValuePair<string,configurationGroup> kvp in storage) {
+					if (kvp.Key != "") 
+						keys.Add (kvp.Key);
+				} 
+				string[] keysArray = keys.ToArray ();
+				return keysArray;
+			}
+		}
+		
+		public void unset (string key) {
+			if (storage.ContainsKey(key)) storage.Remove(key);
+		}
+		
+		public static void Main (String[] args)
 		{
 			Configuration config = new Configuration ();
 			/*
@@ -188,12 +206,19 @@ this is a keyword     =     and this is a value ; and just a dummy comment
 			*/
 			Console.WriteLine (config);
 			config.Save ();			
+			
+			
+
+			
 			/*
+			 *
 			
 			configuration config2 = new configuration ();
 			config2.parse (config.ToString ());
 						
 			Console.WriteLine (config2);*/
+			
+			
 			
 		}
 	}
