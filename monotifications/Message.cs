@@ -139,7 +139,7 @@ namespace monotifications
 		}
 		
 		
-		public static void Main (String[] args)
+		public static void __Main (String[] args)
 		{
 			Message m = new Message ();
 			m.parse ("<html><body><p-1>p1</p-1><p-2>p2</p-2></body></html>");
