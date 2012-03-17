@@ -1,6 +1,7 @@
 using System;
 using monotifications;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace notificationConsoleServer
 {
@@ -50,6 +51,29 @@ namespace notificationConsoleServer
 			network.listenPort = int.Parse (config ["server"] ["port"]);			
 			network.setReceiveAction (receiver);			
 		}*/
+		
+		protected void PurgeMachines(object state) {
+			PurgeMachines();
+		}
+		
+		protected void PurgeMachines ()
+		{
+			DateTime minimum = DateTime.Now;
+			minimum = minimum.Subtract (TimeSpan.FromSeconds (updateInterval * 5));
+			foreach (string key in list_machines()) {
+				DateTime lastseen = DateTime.Parse (machines [key] ["lastseen"]);
+				//if (lastseen < DateTime.Now )
+				//Console.WriteLine ("{0} {1} {2}", key, lastseen, DateTime.Compare (lastseen, minimum));
+				if (DateTime.Compare (lastseen, minimum) == -1)
+					UnregisterClient (key);
+			}
+		}
+		
+		private Timer autoPurgeScheduler;
+		public void TriggerAutoPurge ()
+		{
+			autoPurgeScheduler = new Timer (PurgeMachines, null, 1000 * updateInterval, 1000 * updateInterval);
+		}
 		
 		public void Receiver (string content)
 		{
@@ -126,6 +150,7 @@ namespace notificationConsoleServer
 		{
 			NotificationServer server = new NotificationServer ("server.ini");
 			server.StartListener ();
+			server.TriggerAutoPurge();
 			server.config.TriggerSave ();
 		}
 	}

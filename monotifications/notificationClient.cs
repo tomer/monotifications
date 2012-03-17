@@ -14,6 +14,8 @@ namespace monotifications
 		protected string serverAddress, address, grp; // These fields would be set only when registering
 		protected int serverPort, listenPort;
 		
+		protected int updateInterval = 120;
+		
 		public notificationClient () : this("client.ini")
 		{
 		}
@@ -189,7 +191,7 @@ namespace monotifications
 		private Timer keepaliveScheduler;
 		public void TriggerKeepAlive ()
 		{
-			keepaliveScheduler = new Timer (KeepAliveTrigger, null, 1000 * 5, 1000 * 5);
+			keepaliveScheduler = new Timer (KeepAliveTrigger, null, updateInterval, 1000 * updateInterval);
 		}
 		
 		

@@ -90,6 +90,9 @@ namespace notificationConsoleServer
 						foreach (string row in list_groups())
 							Console.WriteLine ("\t" + row);
 						break;
+					case "purge":
+						PurgeMachines ();
+						break;
 					case "save": 
 						this.config.Save ();
 						this.machines.Save ();
@@ -121,7 +124,7 @@ Available commands:
 		{
 			notificationConsoleServer server = new notificationConsoleServer ("server.ini", 0);
 			server.StartListener ();
-			server.config.TriggerSave ();
+			server.TriggerAutoPurge ();
 			server.ConsoleServer ();
 		}
 	}
