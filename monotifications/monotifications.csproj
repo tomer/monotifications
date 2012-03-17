@@ -39,19 +39,14 @@
       <DeployService-Deploy>true</DeployService-Deploy>
     </Compile>
     <Compile Include="Message.cs" />
-    <Compile Include="Messenger.cs" />
-    <Compile Include="Main.cs" />
     <Compile Include="notificationClient.cs" />
-    <Compile Include="notificationServerReceiver.cs" />
+    <Compile Include="notificationServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Net" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web.Services" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="foo.cs" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

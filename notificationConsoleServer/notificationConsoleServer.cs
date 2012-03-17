@@ -3,7 +3,7 @@ using monotifications;
 
 namespace notificationConsoleServer
 {
-	class notificationConsoleServer : notificationServerReceiver
+	class notificationConsoleServer : NotificationServer
 	{	
 		public notificationConsoleServer () : base("server.ini")
 		{
@@ -18,7 +18,7 @@ namespace notificationConsoleServer
 		}
 		
 
-		public void console ()
+		public void Console ()
 		{
 			string cmd = "";
 			while (cmd != "exit") {

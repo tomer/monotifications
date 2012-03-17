@@ -13,7 +13,7 @@ namespace notificationConsoleClient
 		
 		public notificationConsoleClient(string clientINI) : base(clientINI) {
 			Console.WriteLine ("Ready.");
-			network.setReceiveAction (msgNotify);
+			network.setReceiveAction (MsgNotify);
 		}
 		
 		
@@ -25,7 +25,7 @@ namespace notificationConsoleClient
 			registerOnServer ();			
 		}*/
 		
-		public void registerOnServer ()
+		public void RegisterOnServer ()
 		{
 			if (config ["server"] ["serverAddress"] != "" && config ["server"] ["serverPort"] != "") {
 				Console.WriteLine ("Registering on {0}", config ["server"] ["serverAddress"]);
@@ -37,7 +37,7 @@ namespace notificationConsoleClient
 				Console.WriteLine ("No server defined");
 		}
 		
-		private void msgNotify (string content)
+		private void MsgNotify (string content)
 		{
 			if (content.StartsWith ("<")) {	
 				Message msg = new Message ();
@@ -56,7 +56,7 @@ namespace notificationConsoleClient
 		}*/
 		
 		
-		public void console ()
+		public void Console ()
 		{
 			string cmd = "";
 			while (cmd != "exit") {
