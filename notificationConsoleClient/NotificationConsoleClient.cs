@@ -16,15 +16,6 @@ namespace notificationConsoleClient
 			network.setReceiveAction (MsgNotify);
 		}
 		
-		
-		/*public void startListener ()
-		{			
-			ThreadStart job = new ThreadStart (network.listen);
-			Thread thread = new Thread (job);
-			thread.Start ();
-			registerOnServer ();			
-		}*/
-		
 		public void RegisterOnServer ()
 		{
 			if (config ["server"] ["serverAddress"] != "" && config ["server"] ["serverPort"] != "") {
