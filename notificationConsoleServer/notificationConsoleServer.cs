@@ -17,8 +17,7 @@ namespace notificationConsoleServer
 		{
 		}
 		
-
-		public void Console ()
+		public void ConsoleServer ()
 		{
 			string cmd = "";
 			while (cmd != "exit") {
@@ -72,9 +71,9 @@ namespace notificationConsoleServer
 		public static void Main (string[] args)
 		{
 			notificationConsoleServer server = new notificationConsoleServer ("server.ini", 7778);
-			server.startListener ();
+			server.StartListener ();
 			server.config.TriggerSave ();
-			server.console ();
+			server.ConsoleServer ();
 		}
 	}
 }

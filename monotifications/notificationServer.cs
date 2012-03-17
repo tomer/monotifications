@@ -24,7 +24,7 @@ namespace notificationConsoleServer
 			network.setReceiveAction (Receiver);
 			machines = new Configuration (machinesINI);
 
-		}				
+		}
 
 /*		public notificationServerReceiver ()
 		{
@@ -67,7 +67,7 @@ namespace notificationConsoleServer
 		public static void __Main (string[] args)
 		{
 			NotificationServer server = new NotificationServer ("server.ini", 7778);
-			server.startListener ();
+			server.StartListener ();
 			server.config.TriggerSave();
 						
 		}

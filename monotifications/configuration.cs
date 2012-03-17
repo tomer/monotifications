@@ -10,7 +10,7 @@ namespace monotifications
 		private string filename = "config.ini";
 		private bool saveScheduled = false;
 		private Dictionary <string,configurationGroup> storage = new Dictionary<string, configurationGroup>();
-
+		
 		public Configuration () : this("config.ini")
 		{
 		}

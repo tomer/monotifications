@@ -28,7 +28,7 @@ namespace monotifications
 		{
 			config = new Configuration (clientINI);			
 			network = new monotifications.networking ();
-			network.listenPort = int.Parse (config ["client"] ["recipientPort"]);
+			network.listenPort = int.Parse (port);
 		}
 		
 		public notificationClient (string clientINI, int listenPort)
@@ -91,7 +91,7 @@ namespace monotifications
 			m ["subscription"] =  grp; //config ["client"] ["subscription"];
 			network.talker (serverAddress, serverPort, m.ToString ());
 		}
-		public void startListener ()
+		public void StartListener ()
 		{			
 			ThreadStart job = new ThreadStart (network.listen);
 			Thread thread = new Thread (job);

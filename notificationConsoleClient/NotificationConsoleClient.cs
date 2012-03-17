@@ -56,7 +56,7 @@ namespace notificationConsoleClient
 		}*/
 		
 		
-		public void Console ()
+		public void ConsoleClient ()
 		{
 			string cmd = "";
 			while (cmd != "exit") {
@@ -111,9 +111,9 @@ namespace notificationConsoleClient
 		{
 			notificationConsoleClient client = new notificationConsoleClient ("client.ini");
 			
-			client.startListener ();
-			client.registerOnServer();
-			client.console ();
+			client.StartListener ();
+			client.RegisterOnServer();
+			client.ConsoleClient ();
 		}
 	}
 }
