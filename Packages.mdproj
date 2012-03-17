@@ -8,7 +8,7 @@
     <Packages>
       <Packages>
         <Package name="Linux Client Binaries">
-          <Builder targetFile="exports\notificationConsoleClientBinaries.tar.gz" platform="Linux" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
+          <Builder targetFile="exports\notificationClientBinaries.tar.gz" platform="Linux" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
             <ChildEntries>
               <SolutionItemReference path="notificationConsoleClient\notificationConsoleClient.csproj" />
             </ChildEntries>
@@ -16,7 +16,7 @@
           </Builder>
         </Package>
         <Package name="Windows Client Binaries">
-          <Builder targetFile="exports\notificationConsoleClientBinaries.zip" platform="Windows" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
+          <Builder targetFile="exports\notificationConsoleClient.zip" platform="Windows" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
             <ChildEntries>
               <SolutionItemReference path="notificationConsoleClient\notificationConsoleClient.csproj" />
             </ChildEntries>
@@ -24,7 +24,7 @@
           </Builder>
         </Package>
         <Package name="Linux Server Binaries">
-          <Builder targetFile="exports\notificationServerClientBinaries.tar.gz" platform="Linux" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
+          <Builder targetFile="exports\notificationServerBinaries.tar.gz" platform="Linux" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
             <ChildEntries>
               <SolutionItemReference path="notificationConsoleServer\notificationConsoleServer.csproj" />
             </ChildEntries>
@@ -32,7 +32,7 @@
           </Builder>
         </Package>
         <Package name="Windows Server Binaries">
-          <Builder targetFile="exports\notificationServerClientBinaries.zip" platform="Windows" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
+          <Builder targetFile="exports\notificationServerBinaries.zip" platform="Windows" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
             <ChildEntries>
               <SolutionItemReference path="notificationConsoleServer\notificationConsoleServer.csproj" />
             </ChildEntries>
