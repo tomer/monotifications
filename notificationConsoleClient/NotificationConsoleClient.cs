@@ -49,12 +49,24 @@ namespace notificationConsoleClient
 				Console.WriteLine (string.Format ("New text message: {0}", content));
 		}
 		
-		
-/*		~notificationConsoleClient ()
+		public void ConsoleSingleSend ()
 		{
-//			shutdown();
-		}*/
-		
+			string destIP;
+			string port;
+			string text;
+			Console.Write ("Destination IP: ");
+			destIP = Console.ReadLine ();
+			Console.Write ("Destination port: ");
+			port = Console.ReadLine ();					
+			Console.Write ("Content: ");
+			text = Console.ReadLine ();
+					
+			Message m = new Message ();
+			m ["content"] = text;
+			m ["type"] = "1";
+					
+			network.talker (destIP, int.Parse (port), m.ToString ());
+		}
 		
 		public void ConsoleClient ()
 		{
@@ -71,22 +83,7 @@ namespace notificationConsoleClient
 					this.shutdown ();
 					break;
 				case "send":
-					string destIP;
-					string port;
-					string content;
-					Console.Write ("Destination IP: ");
-					destIP = Console.ReadLine ();
-					Console.Write ("Destination port: ");
-					port = Console.ReadLine ();					
-					Console.Write ("Content: ");
-					content = Console.ReadLine ();
-					
-					Message m = new Message ();
-					m ["content"] = content;
-					m ["type"] = "1";
-					
-					network.talker (destIP, int.Parse (port), m.ToString ());
-					
+					ConsoleSingleSend();
 					break;
 				case "save": 
 					this.config.Save ();
@@ -96,9 +93,12 @@ namespace notificationConsoleClient
 					break;
 				case "?":
 				case "help":
-					Console.WriteLine ("type \"send\" to send a message.");
-					Console.WriteLine ("Type \"exit\" to shutdown application.");
-					break;
+					Console.WriteLine (@"Console client Help
+
+Available commands:
+	send – Send a message to a single machine
+	exit – shut down server console
+");					break;
 				default:
 					Console.WriteLine ("Invalid command. Type \"?\" for help.");
 					break;
