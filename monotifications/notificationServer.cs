@@ -12,7 +12,7 @@ namespace notificationConsoleServer
 		{
 		}
 		
-		public NotificationServer (string serverINI) : this(serverINI, 7778)
+		public NotificationServer (string serverINI) : this(serverINI, 0)
 		{
 		}
 		
@@ -20,11 +20,28 @@ namespace notificationConsoleServer
 		{
 		}
 		
-		public NotificationServer (string serverINI, int listenPort, string machinesINI) : base(serverINI, listenPort)
+		public NotificationServer (string serverINI, int listenPort, string machinesINI)// : base(serverINI, listenPort)
 		{
 			network.setReceiveAction (Receiver);
+			config = new Configuration (serverINI);
 			machines = new Configuration (machinesINI);
-
+			
+			if (listenPort < 1 && config ["server"] ["serverPort"] != null)
+				listenPort = int.Parse (config ["server"] ["serverPort"]);
+			
+			/*if (config ["server"] ["serverPort"] != null && config ["server"] ["serverPort"] != "")
+				serverPort = int.Parse (config ["server"] ["serverPort"]);
+			else
+				serverPort = 7778;*/
+			
+			if (config ["server"] ["serverAddress"] == null || config ["client"] ["serverAddress"] == "0.0.0.0") 
+				address = ip.AddressList[0].ToString();
+			
+			setProperties (address,
+				listenPort,
+				"server",
+				address,
+				listenPort);
 		}
 
 /*		public notificationServerReceiver ()
@@ -47,11 +64,11 @@ namespace notificationConsoleServer
 							RegisterClient (msg ["myAddress"], msg ["myPort"], msg ["subscription"]);
 							break;
 						case "unregister":
-							UnregisterClient (msg ["myAddress"]);
+							UnregisterClient (msg ["myAddress"] +":"+ msg ["myPort"]);
 							break;
 					}
 				//else 
-				Console.WriteLine ("XML dump: {0}", content);
+				// Console.WriteLine ("XML dump: {0}", content);
 				//Console.WriteLine (string.Format ("New message receivd: {0}", msg ["content"]));
 			} else
 				Console.WriteLine (string.Format ("New text message: {0}", content));	
@@ -92,10 +109,11 @@ namespace notificationConsoleServer
 		
 		public void RegisterClient (string addr, string port, string grp)
 		{
-			machines [addr] ["address"] = addr;
-			machines [addr] ["port"] = port;
-			machines [addr] ["grp"] = grp;
-			machines [addr] ["lastseen"] = DateTime.Now.ToString ();
+			string id = addr +":"+ port;
+			machines [id] ["address"] = addr;
+			machines [id] ["port"] = port;
+			machines [id] ["grp"] = grp;
+			machines [id] ["lastseen"] = DateTime.Now.ToString ();
 			//machines.TriggerSave ();
 			machines.Save ();
 		}
@@ -106,7 +124,7 @@ namespace notificationConsoleServer
 		
 		public static void __Main (string[] args)
 		{
-			NotificationServer server = new NotificationServer ("server.ini", 7778);
+			NotificationServer server = new NotificationServer ("server.ini");
 			server.StartListener ();
 			server.config.TriggerSave ();
 		}

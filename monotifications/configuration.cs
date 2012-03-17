@@ -31,7 +31,7 @@ namespace monotifications
 				//return storage [key];
 				
 				if (!storage.ContainsKey(key))	{
-					Console.Error.WriteLine("Configuring new group {0}...",key);
+					//Console.Error.WriteLine("Configuring new group {0}...",key);
 					storage[key] = new configurationGroup();
 				}
 				
@@ -77,8 +77,7 @@ namespace monotifications
 				streamReader.Close ();
 			
 				this.Parse (text);
-			} else
-				Console.WriteLine ("File {0} is inaccessible.", filename);
+			} // else Console.WriteLine ("File {0} is inaccessible.", filename);
 		}
 		
 		private Timer saveScheduler;
@@ -105,11 +104,11 @@ namespace monotifications
 		public void Save (string filename)
 		{
 			try {
-				FileInfo finfo = new FileInfo (filename);
+				/*FileInfo finfo = new FileInfo (filename);
 				if (finfo.Exists) {
 					Console.WriteLine("File {0} exists. Deleting file...", filename);
 					finfo.Delete ();
-				}
+				}*/
 				
 				string text = Dump ();		
 				StreamWriter streamWriter = new StreamWriter (filename);

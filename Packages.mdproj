@@ -8,7 +8,7 @@
     <Packages>
       <Packages>
         <Package name="Linux Client Binaries">
-          <Builder targetFile="monotifications.tar.gz" platform="Linux" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
+          <Builder targetFile="exports\notificationClientBinaries.tar.gz" platform="Linux" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
             <ChildEntries>
               <SolutionItemReference path="notificationConsoleClient\notificationConsoleClient.csproj" />
             </ChildEntries>

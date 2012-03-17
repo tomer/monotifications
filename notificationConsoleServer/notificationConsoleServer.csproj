@@ -46,11 +46,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="..\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="server.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="..\" />
   </ItemGroup>
 </Project>

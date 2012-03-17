@@ -60,6 +60,8 @@ namespace notificationConsoleServer
 		
 		public void ConsoleServer ()
 		{
+			Console.WriteLine ("Ready on {0}:{1}.", Address, ListenPort);
+			
 			string cmd = "";
 			while (cmd != "exit") {
 				Console.Write ("> ");
@@ -117,7 +119,7 @@ Available commands:
 
 		public static void Main (string[] args)
 		{
-			notificationConsoleServer server = new notificationConsoleServer ("server.ini", 7778);
+			notificationConsoleServer server = new notificationConsoleServer ("server.ini", 0);
 			server.StartListener ();
 			server.config.TriggerSave ();
 			server.ConsoleServer ();

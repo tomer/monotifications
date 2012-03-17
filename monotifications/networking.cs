@@ -102,7 +102,7 @@ namespace monotifications
 			s.e = e;
 			s.u = u;
 			
-			Console.WriteLine ("listening for messages on port {0}", _listenPort);
+			//Console.WriteLine ("listening for messages on port {0}", _listenPort);
 			u.BeginReceive (new AsyncCallback (ReceiveCallback), s);
 		}
 		
