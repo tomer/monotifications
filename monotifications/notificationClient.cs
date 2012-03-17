@@ -10,31 +10,36 @@ namespace monotifications
 		public monotifications.networking network;
 		public monotifications.Configuration config;// = new monotifications.configuration ("client.ini");
 		
-		private string serverAddress, address, port, grp; // These fields would be set only when registering
-		private int serverPort;
-		
-/*		public notificationClient ()
-		{
-//			monotifications.configuration config = new monotifications.configuration ("client.ini");
-//			network.listenPort = int.Parse (config ["client"] ["recipientPort"]);			
-//			this.notificationClient("client.ini");
-		}*/
+		protected string serverAddress, address, port, grp; // These fields would be set only when registering
+		protected int serverPort;
 		
 		public notificationClient () : this("client.ini")
 		{
 		}
 		
-		public notificationClient (string clientINI)
+		public notificationClient (string clientINI) : this (clientINI, -1)
 		{
-			config = new Configuration (clientINI);			
-			network = new monotifications.networking ();
-			network.listenPort = int.Parse (port);
+			//config = new Configuration (clientINI);			
+			//network = new monotifications.networking ();
+			//network.listenPort = int.Parse (port);
 		}
 		
 		public notificationClient (string clientINI, int listenPort)
 		{	
 			config = new Configuration (clientINI);			
 			network = new monotifications.networking ();
+			
+			if (listenPort <= 0) {
+				if (int.Parse (config ["client"] ["recipientPort"]) > 0)
+					listenPort = int.Parse (config ["client"] ["recipientPort"]);
+				else {
+					Random rnd = new Random ();
+					listenPort = rnd.Next (7700, 7799);
+				}
+			}
+			
+			
+			
 			network.listenPort = listenPort;
 		}
 		
