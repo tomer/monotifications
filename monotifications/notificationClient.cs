@@ -69,19 +69,37 @@ namespace monotifications
 			m ["myAddress"] = this.address = address; // config ["client"] ["recipientAddress"];
 			m ["subscription"] = this.grp = grp; //config ["client"] ["subscription"];
 			network.talker (this.serverAddress = serverAddress, this.serverPort = int.Parse (config ["server"] ["serverPort"]), m.ToString ());
-			TriggerACK();
+			TriggerKeepAlive ();
 		}
-
-		private Timer ACKScheduler;
-		public void TriggerACK ()
+		
+		~notificationClient() {
+			keepaliveScheduler.Change(Timeout.Infinite, Timeout.Infinite);
+			unregisterOnServer();
+		}
+		
+		protected void unregisterOnServer ()
 		{
+			if (this.serverAddress != "" && this.serverAddress != null) {
+				Message m = new Message ();
+				m ["content"] = "unregister";
+				m ["type"] = "-1"; // Internal commands channel
+				m ["myPort"] = this.port; //config ["client"] ["recipientPort"];
+				m ["myAddress"] = this.address; // config ["client"] ["recipientAddress"];
+				m ["subscription"] = this.grp; //config ["client"] ["subscription"];
+				network.talker (this.serverAddress, this.serverPort, m.ToString ());
+				this.serverAddress = null;
+			}
+		}
 
-			ACKScheduler = new Timer (ACKTrigger, null, 1000 * 5, 1000 * 5);
+		private Timer keepaliveScheduler;
+		public void TriggerKeepAlive ()
+		{
+			keepaliveScheduler = new Timer (KeepAliveTrigger, null, 1000 * 5, 1000 * 5);
 		}
 		
 		
 		
-		private void ACKTrigger (object state)
+		private void KeepAliveTrigger (object state)
 		{
 			Message m = new Message ();
 			m ["content"] = "keep-alive";
