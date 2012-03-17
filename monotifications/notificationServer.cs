@@ -1,5 +1,6 @@
 using System;
 using monotifications;
+using System.Collections.Generic;
 
 namespace notificationConsoleServer
 {
@@ -15,11 +16,11 @@ namespace notificationConsoleServer
 		{
 		}
 		
-		public NotificationServer (string serverINI, int listenPort) : base(serverINI, listenPort)
+		public NotificationServer (string serverINI, int listenPort) : this(serverINI, listenPort, "machines.ini")
 		{
 		}
 		
-		public NotificationServer (string serverINI, int listenPort, string machinesINI)
+		public NotificationServer (string serverINI, int listenPort, string machinesINI) : base(serverINI, listenPort)
 		{
 			network.setReceiveAction (Receiver);
 			machines = new Configuration (machinesINI);
@@ -33,8 +34,6 @@ namespace notificationConsoleServer
 			network.setReceiveAction (receiver);			
 		}*/
 		
-		
-		
 		public void Receiver (string content)
 		{
 			if (content.StartsWith ("<")) {	
@@ -43,15 +42,52 @@ namespace notificationConsoleServer
 				
 				if (msg ["type"] == "-1")
 					switch (msg ["content"]) {
-					case "regiser":
-					case "keep-alive":
-						RegisterClient (msg ["myAddress"], msg ["myPort"], msg ["subscription"]);
-						break;
+						case "regiser":
+						case "keep-alive":
+							RegisterClient (msg ["myAddress"], msg ["myPort"], msg ["subscription"]);
+							break;
+						case "unregister":
+							UnregisterClient (msg ["myAddress"]);
+							break;
 					}
+				//else 
 				Console.WriteLine ("XML dump: {0}", content);
 				//Console.WriteLine (string.Format ("New message receivd: {0}", msg ["content"]));
 			} else
 				Console.WriteLine (string.Format ("New text message: {0}", content));	
+		}
+		
+		// Get list of all registered machines
+		protected string[] list_machines ()
+		{
+			return machines.Keys;
+		}
+		
+		// Get list of all registered machines with specified subscription group
+		protected string[] list_machines (string grp)
+		{
+			List<string > keys = new List<string> ();
+			
+			foreach (string item in list_machines()) {
+				if (machines [item] ["grp"] == grp) {
+					keys.Add (item);
+				}
+			}
+			string[] machinesArray = keys.ToArray ();
+			return machinesArray;
+		}
+		
+		protected string[] list_groups ()
+		{
+			List<string > groups = new List<string> ();
+			
+			foreach (string item in list_machines()) { 
+				if (!groups.Contains (machines [item] ["grp"]))
+					groups.Add (machines [item] ["grp"]);
+			}
+			
+			string[] groupsArray = groups.ToArray ();
+			return groupsArray;
 		}
 		
 		public void RegisterClient (string addr, string port, string grp)
@@ -64,12 +100,15 @@ namespace notificationConsoleServer
 			machines.Save ();
 		}
 		
+		public void UnregisterClient(string client) {
+			machines.unset(client);
+		}
+		
 		public static void __Main (string[] args)
 		{
 			NotificationServer server = new NotificationServer ("server.ini", 7778);
 			server.StartListener ();
-			server.config.TriggerSave();
-						
+			server.config.TriggerSave ();
 		}
 	}
 }
