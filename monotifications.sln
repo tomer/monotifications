@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "Packages", "Packages.mdproj", "{42EE15EA-9368-4860-B024-9B73D863F83A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{9ACD3BD8-9AAC-4581-A9DF-682933189081}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "monotifications", "monotifications\monotifications.csproj", "{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console Applications", "Console Applications", "{6B30DA4C-190F-44AC-92A3-D36E09A51A5C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "notificationConsoleClient", "notificationConsoleClient\notificationConsoleClient.csproj", "{2D03910C-0472-4051-A946-BB70ADB95DD5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "notificationConsoleServer", "notificationConsoleServer\notificationConsoleServer.csproj", "{63AAF57E-A6C2-48E9-A6F9-2430AED03398}"
 EndProject
-Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "Packages", "Packages.mdproj", "{42EE15EA-9368-4860-B024-9B73D863F83A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GUI Applications", "GUI Applications", "{A40DE81D-2E96-4D0F-8EF9-EE9D192BDE46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,8 +36,13 @@ Global
 		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}.Release|x86.ActiveCfg = Release|x86
 		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82} = {9ACD3BD8-9AAC-4581-A9DF-682933189081}
+		{2D03910C-0472-4051-A946-BB70ADB95DD5} = {6B30DA4C-190F-44AC-92A3-D36E09A51A5C}
+		{63AAF57E-A6C2-48E9-A6F9-2430AED03398} = {6B30DA4C-190F-44AC-92A3-D36E09A51A5C}
+	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = notificationConsoleServer\notificationConsoleServer.csproj
+		StartupItem = notificationConsoleClient\notificationConsoleClient.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None

@@ -1,16 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="notificationConsoleServer/notificationConsoleServer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="monotifications/networking.cs">
     <Files>
-      <File FileName="monotifications/configuration.cs" Line="169" Column="4" />
-      <File FileName="monotifications/notificationServer.cs" Line="97" Column="4" />
-      <File FileName="notificationConsoleServer/notificationConsoleServer.cs" Line="85" Column="1" />
+      <File FileName="monotifications/notificationClient.cs" Line="185" Column="47" />
+      <File FileName="notificationConsoleClient/NotificationConsoleClient.cs" Line="136" Column="6" />
+      <File FileName="monotifications/networking.cs" Line="84" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="monotifications" expanded="True" selected="True">
+          <Node name="monotifications" expanded="True">
             <Node name="References" expanded="True" />
+            <Node name="networking.cs" selected="True" />
           </Node>
           <Node name="notificationConsoleClient" expanded="True">
             <Node name="References" expanded="True" />
@@ -18,7 +19,9 @@
           <Node name="notificationConsoleServer" expanded="True">
             <Node name="References" expanded="True" />
           </Node>
-          <Node name="Packages" expanded="True" />
+          <Node name="Packages" expanded="True">
+            <Option id="ShowAllFiles" value="False" />
+          </Node>
         </State>
       </Pad>
     </Pads>
