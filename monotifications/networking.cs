@@ -74,7 +74,7 @@ namespace monotifications
 		{
 			UdpClient u = (UdpClient)((UdpState)(ar.AsyncState)).u;
 			IPEndPoint e = (IPEndPoint)((UdpState)(ar.AsyncState)).e;
-			
+
 			Byte[] receiveBytes = u.EndReceive (ar, ref e);
 			string receiveString = System.Text.Encoding.UTF8.GetString (receiveBytes);
 			
@@ -83,7 +83,7 @@ namespace monotifications
 			
 			if (_listen) {
 				ReceiverCallback (receiveString);
-				listen (); // Wait for next message...	
+				//listen (); // Wait for next message...	
 			}
 		}
 		
@@ -103,9 +103,15 @@ namespace monotifications
 			s.u = u;
 			
 			//Console.WriteLine ("listening for messages on port {0}", _listenPort);
-			u.BeginReceive (new AsyncCallback (ReceiveCallback), s);
+
+			while (_listen)
+			{
+				if (u.Available > 0) 
+					u.BeginReceive (new AsyncCallback(ReceiveCallback), s);
+				System.Threading.Thread.Sleep(100);
+			}
 		}
-		
+
 		public void stopListener ()
 		{
 			_listen = false;
