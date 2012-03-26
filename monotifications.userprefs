@@ -1,27 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="monotifications/networking.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="notificationClient/SysTrayApp.cs">
     <Files>
       <File FileName="monotifications/notificationClient.cs" Line="185" Column="47" />
-      <File FileName="notificationConsoleClient/NotificationConsoleClient.cs" Line="136" Column="6" />
+      <File FileName="notificationConsoleClient/NotificationConsoleClient.cs" Line="128" Column="6" />
       <File FileName="monotifications/networking.cs" Line="84" Column="4" />
+      <File FileName="monotifications/notificationServer.cs" Line="17" Column="4" />
+      <File FileName="notificationClient/SysTrayApp.cs" Line="186" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="monotifications" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="networking.cs" selected="True" />
+          <Node name="Console Applications" expanded="True" />
+          <Node name="GUI Applications" expanded="True">
+            <Node name="notificationClient000" selected="True" />
+            <Node name="Packages" expanded="True" />
           </Node>
-          <Node name="notificationConsoleClient" expanded="True">
-            <Node name="References" expanded="True" />
-          </Node>
-          <Node name="notificationConsoleServer" expanded="True">
-            <Node name="References" expanded="True" />
-          </Node>
-          <Node name="Packages" expanded="True">
-            <Option id="ShowAllFiles" value="False" />
-          </Node>
+          <Node name="Libraries" expanded="True" />
         </State>
       </Pad>
     </Pads>
