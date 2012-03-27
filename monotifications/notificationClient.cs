@@ -11,9 +11,9 @@ namespace monotifications
 		public monotifications.networking network;
 		public monotifications.Configuration config;// = new monotifications.configuration ("client.ini");
 		
-		protected string serverAddress, address, grp; // These fields would be set only when registering
-		protected int serverPort, listenPort;
-		
+		public string serverAddress, address, grp; // These fields would be set only when registering
+		public int serverPort, listenPort;
+	    
 		protected int updateInterval = 120;
 		
 		public notificationClient () : this("client.ini")
