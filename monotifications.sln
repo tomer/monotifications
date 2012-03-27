@@ -15,9 +15,7 @@ Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Packages", "Packages.mdproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GUI Applications", "GUI Applications", "{A40DE81D-2E96-4D0F-8EF9-EE9D192BDE46}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Packages", "notificationClient\Packages.mdproj", "{E651F9CD-610B-48E0-8E2D-BC4A231188B4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUInotificationClient", "..\GUInotificationClient\GUInotificationClient.csproj", "{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUInotificationClient", "GUInotificationClient\GUInotificationClient.csproj", "{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,8 +37,6 @@ Global
 		{63AAF57E-A6C2-48E9-A6F9-2430AED03398}.Release|x86.Build.0 = Release|x86
 		{42EE15EA-9368-4860-B024-9B73D863F83A}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{42EE15EA-9368-4860-B024-9B73D863F83A}.Release|x86.ActiveCfg = Release|Any CPU
-		{E651F9CD-610B-48E0-8E2D-BC4A231188B4}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E651F9CD-610B-48E0-8E2D-BC4A231188B4}.Release|x86.ActiveCfg = Release|Any CPU
 		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Debug|x86.ActiveCfg = Debug|x86
 		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Debug|x86.Build.0 = Debug|x86
 		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Release|x86.ActiveCfg = Release|x86
