@@ -3,7 +3,7 @@ using monotifications;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace notificationConsoleServer
+namespace monotifications
 {
 	public class NotificationServer : monotifications.notificationClient
 	{
