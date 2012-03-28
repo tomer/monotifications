@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "notificationConsoleClient",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "notificationConsoleServer", "notificationConsoleServer\notificationConsoleServer.csproj", "{63AAF57E-A6C2-48E9-A6F9-2430AED03398}"
 EndProject
-Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Packages", "Packages.mdproj", "{42EE15EA-9368-4860-B024-9B73D863F83A}"
+Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "Packages", "Packages.mdproj", "{42EE15EA-9368-4860-B024-9B73D863F83A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GUI Applications", "GUI Applications", "{A40DE81D-2E96-4D0F-8EF9-EE9D192BDE46}"
 EndProject
@@ -25,31 +25,28 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}.Debug|x86.ActiveCfg = Debug|x86
-		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}.Debug|x86.Build.0 = Debug|x86
-		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}.Release|x86.ActiveCfg = Release|x86
-		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}.Release|x86.Build.0 = Release|x86
-		{2D03910C-0472-4051-A946-BB70ADB95DD5}.Debug|x86.ActiveCfg = Debug|x86
-		{2D03910C-0472-4051-A946-BB70ADB95DD5}.Debug|x86.Build.0 = Debug|x86
-		{2D03910C-0472-4051-A946-BB70ADB95DD5}.Release|x86.ActiveCfg = Release|x86
-		{2D03910C-0472-4051-A946-BB70ADB95DD5}.Release|x86.Build.0 = Release|x86
-		{63AAF57E-A6C2-48E9-A6F9-2430AED03398}.Debug|x86.ActiveCfg = Debug|x86
-		{63AAF57E-A6C2-48E9-A6F9-2430AED03398}.Debug|x86.Build.0 = Debug|x86
-		{63AAF57E-A6C2-48E9-A6F9-2430AED03398}.Release|x86.ActiveCfg = Release|x86
-		{63AAF57E-A6C2-48E9-A6F9-2430AED03398}.Release|x86.Build.0 = Release|x86
-		{42EE15EA-9368-4860-B024-9B73D863F83A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{42EE15EA-9368-4860-B024-9B73D863F83A}.Release|x86.ActiveCfg = Release|Any CPU
-		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Debug|x86.ActiveCfg = Debug|x86
-		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Debug|x86.Build.0 = Debug|x86
-		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Release|x86.ActiveCfg = Release|x86
-		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Release|x86.Build.0 = Release|x86
 		{026CA81A-E2C1-4522-8EAB-F6037C94F2FF}.Debug|x86.ActiveCfg = Debug|x86
 		{026CA81A-E2C1-4522-8EAB-F6037C94F2FF}.Debug|x86.Build.0 = Debug|x86
 		{026CA81A-E2C1-4522-8EAB-F6037C94F2FF}.Release|x86.ActiveCfg = Release|x86
 		{026CA81A-E2C1-4522-8EAB-F6037C94F2FF}.Release|x86.Build.0 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+		{2D03910C-0472-4051-A946-BB70ADB95DD5}.Debug|x86.ActiveCfg = Debug|x86
+		{2D03910C-0472-4051-A946-BB70ADB95DD5}.Debug|x86.Build.0 = Debug|x86
+		{2D03910C-0472-4051-A946-BB70ADB95DD5}.Release|x86.ActiveCfg = Release|x86
+		{2D03910C-0472-4051-A946-BB70ADB95DD5}.Release|x86.Build.0 = Release|x86
+		{42EE15EA-9368-4860-B024-9B73D863F83A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{42EE15EA-9368-4860-B024-9B73D863F83A}.Release|x86.ActiveCfg = Release|Any CPU
+		{63AAF57E-A6C2-48E9-A6F9-2430AED03398}.Debug|x86.ActiveCfg = Debug|x86
+		{63AAF57E-A6C2-48E9-A6F9-2430AED03398}.Debug|x86.Build.0 = Debug|x86
+		{63AAF57E-A6C2-48E9-A6F9-2430AED03398}.Release|x86.ActiveCfg = Release|x86
+		{63AAF57E-A6C2-48E9-A6F9-2430AED03398}.Release|x86.Build.0 = Release|x86
+		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}.Debug|x86.ActiveCfg = Debug|x86
+		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}.Debug|x86.Build.0 = Debug|x86
+		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}.Release|x86.ActiveCfg = Release|x86
+		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82}.Release|x86.Build.0 = Release|x86
+		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Debug|x86.ActiveCfg = Debug|x86
+		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Debug|x86.Build.0 = Debug|x86
+		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Release|x86.ActiveCfg = Release|x86
+		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BB20A206-C7C4-49F8-B9A0-3497D9ABBC82} = {9ACD3BD8-9AAC-4581-A9DF-682933189081}
@@ -59,7 +56,7 @@ Global
 		{026CA81A-E2C1-4522-8EAB-F6037C94F2FF} = {A40DE81D-2E96-4D0F-8EF9-EE9D192BDE46}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = notificationClient\notificationClient.csproj
+		StartupItem = GUInotificationClient\GUInotificationClient.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None
@@ -89,5 +86,8 @@ Global
 		$0.StandardHeader = $5
 		$5.Text = 
 		$5.IncludeInNewFiles = True
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
