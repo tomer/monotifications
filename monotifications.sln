@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GUI Applications", "GUI App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUInotificationClient", "GUInotificationClient\GUInotificationClient.csproj", "{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationServerGUI", "NotificationServerGUI\NotificationServerGUI.csproj", "{026CA81A-E2C1-4522-8EAB-F6037C94F2FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -41,6 +43,10 @@ Global
 		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Debug|x86.Build.0 = Debug|x86
 		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Release|x86.ActiveCfg = Release|x86
 		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E}.Release|x86.Build.0 = Release|x86
+		{026CA81A-E2C1-4522-8EAB-F6037C94F2FF}.Debug|x86.ActiveCfg = Debug|x86
+		{026CA81A-E2C1-4522-8EAB-F6037C94F2FF}.Debug|x86.Build.0 = Debug|x86
+		{026CA81A-E2C1-4522-8EAB-F6037C94F2FF}.Release|x86.ActiveCfg = Release|x86
+		{026CA81A-E2C1-4522-8EAB-F6037C94F2FF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{2D03910C-0472-4051-A946-BB70ADB95DD5} = {6B30DA4C-190F-44AC-92A3-D36E09A51A5C}
 		{63AAF57E-A6C2-48E9-A6F9-2430AED03398} = {6B30DA4C-190F-44AC-92A3-D36E09A51A5C}
 		{EFACEDC3-DE46-4823-B642-B4B83BC1FC7E} = {A40DE81D-2E96-4D0F-8EF9-EE9D192BDE46}
+		{026CA81A-E2C1-4522-8EAB-F6037C94F2FF} = {A40DE81D-2E96-4D0F-8EF9-EE9D192BDE46}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = notificationClient\notificationClient.csproj
