@@ -19,6 +19,7 @@ namespace GUInotificationClient
         {
             // Create a simple tray menu with only one item.
             trayMenu = new ContextMenu();
+            trayMenu.MenuItems.Add("About", onAbout);
             trayMenu.MenuItems.Add("Client status", onStatus);
             trayMenu.MenuItems.Add("Test", onSelfTest);
             trayMenu.MenuItems.Add("Quit", OnQuit);
@@ -62,6 +63,12 @@ namespace GUInotificationClient
             System.Windows.Forms.MessageBox.Show(content, "Notification status");
         }
 
+        private void onAbout(object sender, EventArgs e)
+        {
+            string about = "Notification Agent v1.0\n\n (C) 2012\n\tRoman Braverman\n\tTomer Cohen";
+
+            System.Windows.Forms.MessageBox.Show(about, "Notification agent");
+        }
 
         private void onSelfTest(object sender, EventArgs e)
         {

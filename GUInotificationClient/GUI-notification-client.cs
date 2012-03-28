@@ -50,7 +50,7 @@ namespace GUInotificationClient
                 string title = "Notification!";
                 if (msg["title"] != "") title = msg["title"];
 
-                System.Windows.Forms.MessageBox.Show(msg["content"], title, MessageBoxButtons.OK, icon);
+                System.Windows.Forms.MessageBox.Show(new Form() { TopMost = true }, msg["content"], title, MessageBoxButtons.OK, icon);
 
 			} else
                 System.Windows.Forms.MessageBox.Show(content, "Generic notification", MessageBoxButtons.OK);
