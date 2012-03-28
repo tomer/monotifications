@@ -21,7 +21,7 @@ namespace NotificationServerGUI
 		{
 		}
 		
-		public void ConsoleSingleSend ()
+		/*public void ConsoleSingleSend ()
 		{
 			string destIP;
 			string port;
@@ -38,9 +38,9 @@ namespace NotificationServerGUI
 			m ["type"] = "1";
 					
 			network.talker (destIP, int.Parse (port), m.ToString ());
-		}
+		}*/
 		
-		public void ConsoleGroupSend ()
+		/*public void ConsoleGroupSend ()
 		{
 			Console.WriteLine ("Available groups:");
 			foreach (string row in list_groups())
@@ -60,9 +60,9 @@ namespace NotificationServerGUI
 					int.Parse (machines [item] ["port"]), 
 					m.ToString ());
 			}			
-		}
+		}*/
 		
-		public void ConsoleServer ()
+		/*public void ConsoleServer ()
 		{
 			Console.WriteLine ("Ready on {0}:{1}.", Address, ListenPort);
 			
@@ -122,9 +122,9 @@ Available commands:
 				}
 				
 			}
-		}
+		}*/
 
-		public static void Main (string[] args)
+		public static void _Main (string[] args)
 		{
 			/*notificationConsoleServer server = new notificationConsoleServer ("server.ini", 0);
 			server.StartListener ();
