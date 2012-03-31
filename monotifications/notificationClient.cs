@@ -118,6 +118,7 @@ namespace monotifications
 			m ["type"] = "-1"; // Internal commands channel
 			m ["myPort"] = listenPort.ToString();
 			m ["myAddress"] = address;
+            m["hostname"] = Dns.GetHostName();
 			m ["subscription"] = grp; ///
 			network.talker (this.serverAddress, this.serverPort, m.ToString ());
 			TriggerKeepAlive ();
