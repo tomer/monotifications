@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GUInotificationClient")]
+[assembly: AssemblyTitle("Notification Agent")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Kinneret")]
-[assembly: AssemblyProduct("GUInotificationClient")]
-[assembly: AssemblyCopyright("Copyright © Kinneret 2012")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Notification Agent")]
+[assembly: AssemblyCopyright("Copyright © Tomer Cohen  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

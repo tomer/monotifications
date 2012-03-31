@@ -35,16 +35,17 @@ namespace GUInotificationClient
 
                 MessageBoxIcon icon = MessageBoxIcon.None;
 
-                switch (msg["type"]) {
+                switch (msg["type"].ToLower()) {
                     case "asterisk":    icon = MessageBoxIcon.Asterisk; break;
                     case "error":       icon = MessageBoxIcon.Error; break;
                     case "exclamation": icon = MessageBoxIcon.Exclamation; break;
                     case "hand":        icon = MessageBoxIcon.Hand; break;
                     case "information": icon = MessageBoxIcon.Information; break;
-                    case "none":        icon = MessageBoxIcon.None; break;
                     case "question":    icon = MessageBoxIcon.Question; break;
                     case "stop":        icon = MessageBoxIcon.Stop; break;
-                    case "warning":     icon = MessageBoxIcon.Warning; break;   
+                    case "warning":     icon = MessageBoxIcon.Warning; break;
+                    case "none": 
+                    default: icon = MessageBoxIcon.None; break;
                 }
 
                 string title = "Notification!";

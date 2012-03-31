@@ -29,7 +29,7 @@ namespace GUInotificationClient
             // can of course use your own custom icon too.
             trayIcon = new NotifyIcon();
             trayIcon.Text = "Notification Client";
-            trayIcon.Icon = new Icon(SystemIcons.Application, 40, 40);
+            trayIcon.Icon = new Icon(Properties.Resources.systrayicon, 128, 128);
 
             // Add menu to tray icon and show it.
             trayIcon.ContextMenu = trayMenu;
@@ -104,11 +104,13 @@ namespace GUInotificationClient
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysTrayApp));
             this.SuspendLayout();
             // 
             // SysTrayApp
             // 
             this.ClientSize = new System.Drawing.Size(292, 273);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SysTrayApp";
             this.Load += new System.EventHandler(this.SysTrayApp_Load);
             this.ResumeLayout(false);
