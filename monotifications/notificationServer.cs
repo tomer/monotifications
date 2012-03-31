@@ -85,7 +85,9 @@ namespace monotifications
 					switch (msg ["content"]) {
 						case "regiser":
 						case "keep-alive":
-							RegisterClient (msg ["myAddress"], msg ["myPort"], msg ["subscription"]);
+							if (msg["hostname"] != "")
+                                RegisterClient (msg["hostname"]+":"+msg["myPort"], msg ["myAddress"], msg ["myPort"], msg ["subscription"]);
+                            else RegisterClient (msg ["myAddress"], msg ["myPort"], msg ["subscription"]);
 							break;
 						case "unregister":
 							UnregisterClient (msg ["myAddress"] +":"+ msg ["myPort"]);
@@ -126,20 +128,27 @@ namespace monotifications
 		
 		public string[] list_groups ()
 		{
-			List<string > groups = new List<string> ();
+			List<string> groups = new List<string> ();
 			
 			foreach (string item in list_machines()) { 
 				if (!groups.Contains (machines [item] ["grp"]))
 					groups.Add (machines [item] ["grp"]);
 			}
 			
+            if (groups.Count == 0) return null;
+
 			string[] groupsArray = groups.ToArray ();
 			return groupsArray;
 		}
-		
-		public void RegisterClient (string addr, string port, string grp)
+
+        public void RegisterClient(string addr, string port, string grp)
+        {
+            string id = addr +":"+ port;
+            RegisterClient(id, addr, port, grp);
+        }
+		public void RegisterClient (string id, string addr, string port, string grp)
 		{
-			string id = addr +":"+ port;
+			//string id = addr +":"+ port;
 			machines [id] ["address"] = addr;
 			machines [id] ["port"] = port;
 			machines [id] ["grp"] = grp;
