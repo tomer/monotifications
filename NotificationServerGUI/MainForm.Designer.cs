@@ -53,15 +53,16 @@
             this.txtContent.Name = "txtContent";
             this.txtContent.Size = new System.Drawing.Size(320, 80);
             this.txtContent.TabIndex = 0;
-            this.txtContent.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lstGroups
             // 
             this.lstGroups.FormattingEnabled = true;
             this.lstGroups.Location = new System.Drawing.Point(6, 31);
             this.lstGroups.Name = "lstGroups";
+            this.lstGroups.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lstGroups.Size = new System.Drawing.Size(157, 108);
             this.lstGroups.TabIndex = 1;
+            this.lstGroups.SelectedIndexChanged += new System.EventHandler(this.lstGroups_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -71,7 +72,6 @@
             this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Subscription Groups:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnSubmit
             // 
@@ -101,8 +101,10 @@
             this.lstComputers.FormattingEnabled = true;
             this.lstComputers.Location = new System.Drawing.Point(169, 31);
             this.lstComputers.Name = "lstComputers";
+            this.lstComputers.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstComputers.Size = new System.Drawing.Size(157, 108);
             this.lstComputers.TabIndex = 3;
+            this.lstComputers.SelectedIndexChanged += new System.EventHandler(this.lstComputers_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -134,7 +136,6 @@
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "groupBox3";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // label4
             // 
@@ -178,8 +179,12 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSubmit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Notification Server";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
