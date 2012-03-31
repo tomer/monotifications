@@ -7,7 +7,7 @@ namespace monotifications
 {
 	public class NotificationServer : monotifications.notificationClient
 	{
-		protected Configuration machines;
+		public Configuration machines;
 		
 		public NotificationServer () : this("server.ini")
 		{
@@ -99,13 +99,15 @@ namespace monotifications
 		}
 		
 		// Get list of all registered machines
-		protected string[] list_machines ()
+		public string[] list_machines ()
 		{
+            if (machines.Keys.Length ==0) return null;
+
 			return machines.Keys;
 		}
 		
 		// Get list of all registered machines with specified subscription group
-		protected string[] list_machines (string grp)
+		public string[] list_machines (string grp)
 		{
 			List<string > keys = new List<string> ();
 			
@@ -114,11 +116,15 @@ namespace monotifications
 					keys.Add (item);
 				}
 			}
-			string[] machinesArray = keys.ToArray ();
-			return machinesArray;
+            if (keys.Count < 1) return null;
+            else
+            {
+                string[] machinesArray = keys.ToArray();
+                return machinesArray;
+            }
 		}
 		
-		protected string[] list_groups ()
+		public string[] list_groups ()
 		{
 			List<string > groups = new List<string> ();
 			
