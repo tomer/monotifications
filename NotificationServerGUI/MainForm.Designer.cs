@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtContent = new System.Windows.Forms.TextBox();
             this.lstGroups = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbIcon = new System.Windows.Forms.ComboBox();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -52,16 +55,17 @@
             this.txtContent.Multiline = true;
             this.txtContent.Name = "txtContent";
             this.txtContent.Size = new System.Drawing.Size(320, 80);
-            this.txtContent.TabIndex = 0;
+            this.txtContent.TabIndex = 2;
             // 
             // lstGroups
             // 
             this.lstGroups.FormattingEnabled = true;
             this.lstGroups.Location = new System.Drawing.Point(6, 31);
             this.lstGroups.Name = "lstGroups";
-            this.lstGroups.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lstGroups.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstGroups.Size = new System.Drawing.Size(157, 108);
-            this.lstGroups.TabIndex = 1;
+            this.lstGroups.Sorted = true;
+            this.lstGroups.TabIndex = 0;
             this.lstGroups.SelectedIndexChanged += new System.EventHandler(this.lstGroups_SelectedIndexChanged);
             // 
             // label1
@@ -78,7 +82,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(225, 346);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(121, 46);
-            this.btnSubmit.TabIndex = 8;
+            this.btnSubmit.TabIndex = 5;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -103,7 +107,8 @@
             this.lstComputers.Name = "lstComputers";
             this.lstComputers.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lstComputers.Size = new System.Drawing.Size(157, 108);
-            this.lstComputers.TabIndex = 3;
+            this.lstComputers.Sorted = true;
+            this.lstComputers.TabIndex = 1;
             this.lstComputers.SelectedIndexChanged += new System.EventHandler(this.lstComputers_SelectedIndexChanged);
             // 
             // label5
@@ -135,7 +140,7 @@
             this.groupBox3.Size = new System.Drawing.Size(334, 73);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
+            this.groupBox3.Text = "Optional notification preferences";
             // 
             // label4
             // 
@@ -151,7 +156,7 @@
             this.txtTitle.Location = new System.Drawing.Point(84, 46);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(242, 20);
-            this.txtTitle.TabIndex = 10;
+            this.txtTitle.TabIndex = 4;
             // 
             // label3
             // 
@@ -168,20 +173,34 @@
             this.cmbIcon.Location = new System.Drawing.Point(84, 19);
             this.cmbIcon.Name = "cmbIcon";
             this.cmbIcon.Size = new System.Drawing.Size(121, 21);
-            this.cmbIcon.TabIndex = 8;
+            this.cmbIcon.TabIndex = 3;
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(11, 346);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(109, 46);
+            this.btnReset.TabIndex = 6;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(359, 395);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSubmit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "Notification Server";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -210,6 +229,8 @@
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbIcon;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Timer timer1;
 
     }
 }
