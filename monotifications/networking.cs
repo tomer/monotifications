@@ -50,7 +50,10 @@ namespace monotifications
 			byte[] send_buffer = System.Text.Encoding.UTF8.GetBytes (text_to_send);
 			
 // Remind the user of where this is going.
-			//Console.WriteLine ("sending to address: {0} port: {1}",			sending_end_point.Address,				sending_end_point.Port);
+			
+			Console.WriteLine ("sending to address: {0} port: {1}", sending_end_point.Address, sending_end_point.Port);
+			Console.WriteLine (text_to_send);
+			
 			try {
 				sending_socket.SendTo (send_buffer, sending_end_point);
 			} catch (Exception send_exception) {
