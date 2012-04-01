@@ -44,13 +44,6 @@ namespace monotifications
 				address,
 				listenPort);
 		}
-
-/*		public notificationServerReceiver ()
-		{
-			config = new monotifications.configuration ("server.ini");
-			network.listenPort = int.Parse (config ["server"] ["port"]);			
-			network.setReceiveAction (receiver);			
-		}*/
 		
 		protected void PurgeMachines(object state) {
 			PurgeMachines();
@@ -135,7 +128,7 @@ namespace monotifications
 					groups.Add (machines [item] ["grp"]);
 			}
 			
-            if (groups.Count == 0) return null;
+            		if (groups.Count == 0) return null;
 
 			string[] groupsArray = groups.ToArray ();
 			return groupsArray;
