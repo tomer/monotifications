@@ -103,13 +103,7 @@ namespace monotifications
 		
 		public void Save (string filename)
 		{
-			try {
-				/*FileInfo finfo = new FileInfo (filename);
-				if (finfo.Exists) {
-					Console.WriteLine("File {0} exists. Deleting file...", filename);
-					finfo.Delete ();
-				}*/
-				
+			try {				
 				string text = Dump ();		
 				StreamWriter streamWriter = new StreamWriter (filename);
 				streamWriter.Write (text);
@@ -165,7 +159,7 @@ namespace monotifications
 		
 		public void unset (string key) {
 			if (storage.ContainsKey(key)) storage.Remove(key);
-		}
+		} 
 		
 		public static void Main (String[] args)
 		{
