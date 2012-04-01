@@ -56,7 +56,7 @@ Global
 		{026CA81A-E2C1-4522-8EAB-F6037C94F2FF} = {A40DE81D-2E96-4D0F-8EF9-EE9D192BDE46}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = GUInotificationClient\GUInotificationClient.csproj
+		StartupItem = NotificationServerGUI\NotificationServerGUI.csproj
 		Policies = $0
 		$0.DotNetNamingPolicy = $1
 		$1.DirectoryNamespaceAssociation = None
