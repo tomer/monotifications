@@ -91,12 +91,6 @@ namespace NotificationServerGUI
             string title = txtTitle.Text + "";
             string icon = cmbIcon.SelectedText;
 
-            /*foreach (string item in lstComputers.SelectedItems)
-            {
-                //sendMessage(server.machines[item]["recipientAddress"], int.Parse(server.machines[item]["recipientPort"]), txtContent.Text, txtTitle.Text, cmbIcon.SelectedValue.ToString);
-                sendMessage(server.machines[item]["recipientAddress"], int.Parse(server.machines[item]["recipientPort"]), content, title, icon);
-            }*/
-
             List<string> recipients = new List<string>();
 
             foreach (string key in lstComputers.SelectedItems) recipients.Add(key);
@@ -159,25 +153,13 @@ namespace NotificationServerGUI
         }
 
         private void lstGroups_SelectedIndexChanged(object sender, EventArgs e)
-        {/*
-            if (lstGroups.SelectedItems.Count == 0)                
-                lstComputers.Enabled = true;
-            else
-                lstComputers.Enabled = false;
-            enableDisableSubmitButton();*/
-
+        {
             lstComputers.SelectedItems.Clear();
             refreshGroupsAndComputers();
         }
 
         private void lstComputers_SelectedIndexChanged(object sender, EventArgs e)
-        {/*
-            if (lstComputers.SelectedItems.Count == 0)
-                lstGroups.Enabled = true;
-            else
-                lstGroups.Enabled = false;
-            enableDisableSubmitButton();*/
-
+        {
             enableDisableSubmitButton();
         }
 
