@@ -77,9 +77,9 @@ namespace NotificationServerGUI
         }
 
         private void SendMessage(List<string> list, string content, string title, string icon) {
-            /*string messagebox = "Message will be sent to the following destinations:\n ";
-            foreach (string item in list) messagebox += item + "\n";
-            MessageBox.Show(messagebox);*/
+            string messagebox = "Message will be sent to the following destinations:\n ";
+            foreach (string item in list) messagebox += "• "+ item + "\n";
+            MessageBox.Show(messagebox);
             
             foreach (string item in list)
             {
