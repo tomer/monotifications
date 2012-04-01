@@ -11,7 +11,7 @@ namespace monotifications
 		public monotifications.networking network;
 		public monotifications.Configuration config;// = new monotifications.configuration ("client.ini");
 		
-		public string serverAddress, address, grp; // These fields would be set only when registering
+		public string serverAddress, address, grp, hostname; // These fields would be set only when registering
 		public int serverPort, listenPort;
 	    
 		protected int updateInterval = 120;
@@ -95,21 +95,10 @@ namespace monotifications
 		public void shutdown ()
 		{
 			Console.WriteLine ("Shutting down");
+			this.unregisterOnServer();
 			this.network.stopListener ();
 			this.config.Save ();
 		}
-		
-		/*protected void registerOnServer (string serverAddress, string address, string port, string grp)
-		{
-			Message m = new Message ();
-			m ["content"] = "register";
-			m ["type"] = "-1"; // Internal commands channel
-			m ["myPort"] / *= this.listenPort* /  = port; //config ["client"] ["recipientPort"];
-			m ["myAddress"] = this.address = address; // config ["client"] ["recipientAddress"];
-			m ["subscription"] = this.grp = grp; //config ["client"] ["subscription"];
-			network.talker (this.serverAddress = serverAddress, this.serverPort = int.Parse (config ["server"] ["serverPort"]), m.ToString ());
-			TriggerKeepAlive ();
-		}*/
 		
 		protected void registerOnServer ()
 		{
@@ -118,7 +107,7 @@ namespace monotifications
 			m ["type"] = "-1"; // Internal commands channel
 			m ["myPort"] = listenPort.ToString();
 			m ["myAddress"] = address;
-            m["hostname"] = Dns.GetHostName();
+            		m["hostname"] = hostname = Dns.GetHostName();
 			m ["subscription"] = grp; ///
 			network.talker (this.serverAddress, this.serverPort, m.ToString ());
 			TriggerKeepAlive ();
@@ -184,6 +173,7 @@ namespace monotifications
 				m ["myPort"] = this.listenPort.ToString(); //config ["client"] ["recipientPort"];
 				m ["myAddress"] = this.address; // config ["client"] ["recipientAddress"];
 				m ["subscription"] = this.grp; //config ["client"] ["subscription"];
+				m["hostname"] = this.hostname;
 				network.talker (this.serverAddress, this.serverPort, m.ToString ());
 				this.serverAddress = null;
 			}
