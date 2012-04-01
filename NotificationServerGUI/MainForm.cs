@@ -22,54 +22,28 @@ namespace NotificationServerGUI
 
             server = new NotificationServerGUI("server.ini", 0);
             server.StartListener();
-            server.TriggerAutoPurge();
+            //server.TriggerAutoPurge();
             refreshGroupsAndComputers();
             
             timer1.Interval = 5000;
             timer1.Start();
         }
 
-        private void refreshGroupsAndComputers()
-        {
-            List<string> groups = new List<string>();
-
-            foreach (string row in server.list_groups()) {
-                groups.Add(row);
-                if (!lstGroups.Items.Contains(row))
-                    lstGroups.Items.Add(row);
-            }
-            foreach (string row in lstGroups.Items) {
-                if (!groups.Contains(row))
-                    lstGroups.Items.Remove(row);
-            }
-
-            List<string> computers = new List<string>();
-
-            if (lstGroups.SelectedItems.Count == 0)
-            {
-                foreach (string row in server.list_machines())
-                {
-                    computers.Add(row);
-                    if (!lstComputers.Items.Contains(row))
-                        lstComputers.Items.Add(row);
-                }
-                foreach (string row in lstComputers.Items)
-                {
-                    if (!computers.Contains(row))
-                        lstComputers.Items.Remove(row);
-                }
-            }
-            else
-            {
-                foreach (string grp in lstGroups.SelectedItems)
-                {
-                    foreach (string comp in server.list_machines(grp))
-                    {
-                        lstComputers.SelectedItems.Add(comp);
-                    }
-                }       
-            }
-        }
+        private void refreshGroupsAndComputers ()
+		{
+			lstGroups.Items.Clear ();
+			lstComputers.Items.Clear ();
+			
+			if (server.list_machines() == null) return;
+			
+			foreach (string item in server.list_machines()) {
+				lstComputers.Items.Add (item);
+			}
+			
+			foreach (string item in server.list_groups()) {
+				lstGroups.Items.Add (item);
+			}
+		}
 
         private void setMessageIcons()
         {
@@ -94,18 +68,18 @@ namespace NotificationServerGUI
             List<string> recipients = new List<string>();
 
             foreach (string key in lstComputers.SelectedItems) recipients.Add(key);
-            foreach (string grp in lstGroups.SelectedItems)
+            /*foreach (string grp in lstGroups.SelectedItems)
                 foreach (string key in server.list_machines(grp)) 
-                    recipients.Add(key);
+                    recipients.Add(key);*/
 
             SendMessage(recipients, content, title, icon);
 
         }
 
         private void SendMessage(List<string> list, string content, string title, string icon) {
-            string messagebox = "Message will be sent to the following destinations:\n ";
+            /*string messagebox = "Message will be sent to the following destinations:\n ";
             foreach (string item in list) messagebox += item + "\n";
-            MessageBox.Show(messagebox);
+            MessageBox.Show(messagebox);*/
             
             foreach (string item in list)
             {
@@ -152,11 +126,16 @@ namespace NotificationServerGUI
 
         }
 
-        private void lstGroups_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lstComputers.SelectedItems.Clear();
-            refreshGroupsAndComputers();
-        }
+        private void lstGroups_SelectedIndexChanged (object sender, EventArgs e)
+		{
+			lstComputers.SelectedItems.Clear ();
+			
+			foreach (string grp in lstGroups.SelectedItems)
+				foreach (string item in server.list_machines(grp))
+					lstComputers.SelectedItems.Add(item);
+			
+			//refreshGroupsAndComputers();
+		}
 
         private void lstComputers_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -170,18 +149,21 @@ namespace NotificationServerGUI
             else btnSubmit.Enabled = false;
         }
 
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-            txtContent.Text = "";
-            txtTitle.Text = "";
-            lstComputers.SelectedItems.Clear();
-            lstGroups.SelectedItems.Clear();
-            cmbIcon.SelectedIndex = 0;
-        }
+        private void btnReset_Click (object sender, EventArgs e)
+		{
+			txtContent.Text = "";
+			txtTitle.Text = "";
+			lstComputers.SelectedItems.Clear ();
+			lstGroups.SelectedItems.Clear ();
+			cmbIcon.SelectedIndex = 0;
+		}
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            refreshGroupsAndComputers();
-        }
+        private void timer1_Tick (object sender, EventArgs e)
+		{
+			if (lstComputers.SelectedItems.Count == 0 && lstGroups.SelectedItems.Count == 0) {
+				refreshGroupsAndComputers ();
+			}
+			server.PurgeMachines ();
+		}
     }
 }
