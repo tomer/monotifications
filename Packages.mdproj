@@ -39,6 +39,33 @@
             <RootEntry path="monotifications.sln" id=":root:" />
           </Builder>
         </Package>
+        <Package name="System Tray Notification Agent Binaries">
+          <Builder targetFile="exports\System Tray Notification Agent.zip" platform="Windows" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
+            <RootEntry path="GUInotificationClient\GUInotificationClient.csproj" />
+          </Builder>
+        </Package>
+        <Package name="Microsoft Windows Binaries">
+          <Builder targetFile="NotificationServerGUI\Notification Server .zip" platform="Windows" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
+            <RootEntry path="NotificationServerGUI\NotificationServerGUI.csproj" />
+          </Builder>
+        </Package>
+        <Package name="Notification Sources Distribution">
+          <Builder targetFile="exports\Source Distribution.tar.bz2" format="MonoDevelop.Projects.FileFormat" ctype="SourcesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="NotificationServerGUI\NotificationServerGUI.csproj" />
+              <SolutionItemReference path="GUInotificationClient\GUInotificationClient.csproj" />
+              <SolutionItemReference path="monotifications.sln" id="{A40DE81D-2E96-4D0F-8EF9-EE9D192BDE46}" />
+              <SolutionItemReference path="monotifications\monotifications.csproj" />
+              <SolutionItemReference path="monotifications.sln" id="{9ACD3BD8-9AAC-4581-A9DF-682933189081}" />
+            </ChildEntries>
+            <RootEntry path="monotifications.sln" id=":root:" />
+          </Builder>
+        </Package>
+        <Package name="Notification Server">
+          <Builder targetFile="exports\Notification Server.zip" platform="Windows" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
+            <RootEntry path="NotificationServerGUI\NotificationServerGUI.csproj" />
+          </Builder>
+        </Package>
       </Packages>
     </Packages>
   </PropertyGroup>
