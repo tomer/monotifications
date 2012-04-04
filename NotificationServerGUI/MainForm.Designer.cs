@@ -29,24 +29,25 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.txtContent = new System.Windows.Forms.TextBox();
             this.lstGroups = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblGroups = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gboxRecipients = new System.Windows.Forms.GroupBox();
             this.lstComputers = new System.Windows.Forms.ListBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblComputers = new System.Windows.Forms.Label();
+            this.gboxContent = new System.Windows.Forms.GroupBox();
+            this.gboxPreferences = new System.Windows.Forms.GroupBox();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblIcon = new System.Windows.Forms.Label();
             this.cmbIcon = new System.Windows.Forms.ComboBox();
             this.btnReset = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gboxRecipients.SuspendLayout();
+            this.gboxContent.SuspendLayout();
+            this.gboxPreferences.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtContent
@@ -68,14 +69,14 @@
             this.lstGroups.TabIndex = 0;
             this.lstGroups.SelectedIndexChanged += new System.EventHandler(this.lstGroups_SelectedIndexChanged);
             // 
-            // label1
+            // lblGroups
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Subscription Groups:";
+            this.lblGroups.AutoSize = true;
+            this.lblGroups.Location = new System.Drawing.Point(3, 15);
+            this.lblGroups.Name = "lblGroups";
+            this.lblGroups.Size = new System.Drawing.Size(105, 13);
+            this.lblGroups.TabIndex = 2;
+            this.lblGroups.Text = "Subscription Groups:";
             // 
             // btnSubmit
             // 
@@ -87,18 +88,18 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // groupBox1
+            // gboxRecipients
             // 
-            this.groupBox1.Controls.Add(this.lstComputers);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.lstGroups);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(334, 145);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Message recipients";
+            this.gboxRecipients.Controls.Add(this.lstComputers);
+            this.gboxRecipients.Controls.Add(this.lblComputers);
+            this.gboxRecipients.Controls.Add(this.lstGroups);
+            this.gboxRecipients.Controls.Add(this.lblGroups);
+            this.gboxRecipients.Location = new System.Drawing.Point(12, 12);
+            this.gboxRecipients.Name = "gboxRecipients";
+            this.gboxRecipients.Size = new System.Drawing.Size(334, 145);
+            this.gboxRecipients.TabIndex = 9;
+            this.gboxRecipients.TabStop = false;
+            this.gboxRecipients.Text = "Message recipients";
             // 
             // lstComputers
             // 
@@ -111,45 +112,45 @@
             this.lstComputers.TabIndex = 1;
             this.lstComputers.SelectedIndexChanged += new System.EventHandler(this.lstComputers_SelectedIndexChanged);
             // 
-            // label5
+            // lblComputers
             // 
-            this.label5.Location = new System.Drawing.Point(166, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Single computers";
+            this.lblComputers.Location = new System.Drawing.Point(166, 15);
+            this.lblComputers.Name = "lblComputers";
+            this.lblComputers.Size = new System.Drawing.Size(105, 13);
+            this.lblComputers.TabIndex = 4;
+            this.lblComputers.Text = "Single computers";
             // 
-            // groupBox2
+            // gboxContent
             // 
-            this.groupBox2.Controls.Add(this.txtContent);
-            this.groupBox2.Location = new System.Drawing.Point(12, 163);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(334, 98);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Message content";
+            this.gboxContent.Controls.Add(this.txtContent);
+            this.gboxContent.Location = new System.Drawing.Point(12, 163);
+            this.gboxContent.Name = "gboxContent";
+            this.gboxContent.Size = new System.Drawing.Size(334, 98);
+            this.gboxContent.TabIndex = 10;
+            this.gboxContent.TabStop = false;
+            this.gboxContent.Text = "Message content";
             // 
-            // groupBox3
+            // gboxPreferences
             // 
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.txtTitle);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.cmbIcon);
-            this.groupBox3.Location = new System.Drawing.Point(12, 267);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(334, 73);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Optional notification preferences";
+            this.gboxPreferences.Controls.Add(this.lblTitle);
+            this.gboxPreferences.Controls.Add(this.txtTitle);
+            this.gboxPreferences.Controls.Add(this.lblIcon);
+            this.gboxPreferences.Controls.Add(this.cmbIcon);
+            this.gboxPreferences.Location = new System.Drawing.Point(12, 267);
+            this.gboxPreferences.Name = "gboxPreferences";
+            this.gboxPreferences.Size = new System.Drawing.Size(334, 73);
+            this.gboxPreferences.TabIndex = 11;
+            this.gboxPreferences.TabStop = false;
+            this.gboxPreferences.Text = "Optional notification preferences";
             // 
-            // label4
+            // lblTitle
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 49);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Window title:";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(6, 49);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(68, 13);
+            this.lblTitle.TabIndex = 11;
+            this.lblTitle.Text = "Window title:";
             // 
             // txtTitle
             // 
@@ -158,14 +159,14 @@
             this.txtTitle.Size = new System.Drawing.Size(242, 20);
             this.txtTitle.TabIndex = 4;
             // 
-            // label3
+            // lblIcon
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Message icon:";
+            this.lblIcon.AutoSize = true;
+            this.lblIcon.Location = new System.Drawing.Point(6, 22);
+            this.lblIcon.Name = "lblIcon";
+            this.lblIcon.Size = new System.Drawing.Size(76, 13);
+            this.lblIcon.TabIndex = 9;
+            this.lblIcon.Text = "Message icon:";
             // 
             // cmbIcon
             // 
@@ -195,21 +196,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(359, 395);
             this.Controls.Add(this.btnReset);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gboxPreferences);
+            this.Controls.Add(this.gboxContent);
+            this.Controls.Add(this.gboxRecipients);
             this.Controls.Add(this.btnSubmit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Notification Server";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gboxRecipients.ResumeLayout(false);
+            this.gboxRecipients.PerformLayout();
+            this.gboxContent.ResumeLayout(false);
+            this.gboxContent.PerformLayout();
+            this.gboxPreferences.ResumeLayout(false);
+            this.gboxPreferences.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -218,16 +220,16 @@
 
         private System.Windows.Forms.TextBox txtContent;
         private System.Windows.Forms.ListBox lstGroups;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblGroups;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gboxRecipients;
         private System.Windows.Forms.ListBox lstComputers;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblComputers;
+        private System.Windows.Forms.GroupBox gboxContent;
+        private System.Windows.Forms.GroupBox gboxPreferences;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtTitle;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblIcon;
         private System.Windows.Forms.ComboBox cmbIcon;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Timer timer1;
