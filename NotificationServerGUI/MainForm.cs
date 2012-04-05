@@ -63,7 +63,7 @@ namespace NotificationServerGUI
         {
             string content = txtContent.Text + "";
             string title = txtTitle.Text + "";
-            string icon = cmbIcon.SelectedText;
+            string icon = cmbIcon.SelectedItem.ToString(); 
 
             List<string> recipients = new List<string>();
 
