@@ -59,11 +59,22 @@ namespace monotifications
 			}
 			return str;
 		}
-		
+
+        public int Count()
+        {
+            return storage.Count;
+        }
+
 		public void Load() {
 			this.Load(this.filename);
 		}
-		
+
+        public bool KeyExists(string key)
+        {
+            if (storage.ContainsKey(key)) return true;
+            else return false;
+        }
+
 		public void Load (string filename)
 		{
 			FileInfo finfo = new FileInfo (filename);
