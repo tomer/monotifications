@@ -100,7 +100,7 @@ namespace monotifications
 			this.config.Save ();
 		}
 		
-		protected void registerOnServer ()
+		public void registerOnServer ()
 		{
 			Message m = new Message ();
 			m ["content"] = "register";
@@ -164,7 +164,7 @@ namespace monotifications
 			}
 		}
 		
-		protected void unregisterOnServer ()
+		public void unregisterOnServer ()
 		{
 			if (this.serverAddress != "" && this.serverAddress != null) {
 				Message m = new Message ();

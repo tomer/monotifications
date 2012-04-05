@@ -19,6 +19,11 @@ namespace GUInotificationClient
         {
             // Create a simple tray menu with only one item.
             trayMenu = new ContextMenu();
+#if DEBUG
+            trayMenu.MenuItems.Add("Register (DEBUG)", onDebugRegister);
+            trayMenu.MenuItems.Add("Unregister (DEBUG)", OnDebugUnregister);
+            trayMenu.MenuItems.Add("-");
+#endif
             trayMenu.MenuItems.Add("About", onAbout);
             trayMenu.MenuItems.Add("Client status", onStatus);
             trayMenu.MenuItems.Add("Test", onSelfTest);
@@ -56,6 +61,19 @@ namespace GUInotificationClient
 
             base.OnLoad(e);
         }
+
+#if DEBUG
+        private void onDebugRegister(object sender, EventArgs e)
+        {
+            client.registerOnServer();
+        }
+
+        private void OnDebugUnregister(object sender, EventArgs e)
+        {
+            client.unregisterOnServer();
+        }
+#endif
+
 
         private void onStatus(object sender, EventArgs e)
         {
