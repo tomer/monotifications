@@ -201,6 +201,7 @@ namespace monotifications
 		{			
 			ThreadStart job = new ThreadStart (network.listen);
 			Thread thread = new Thread (job);
+            thread.Name = "Notifications Listener";
 			thread.Start ();
 			registerOnServer ();	
 		}
