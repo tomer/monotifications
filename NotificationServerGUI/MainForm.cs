@@ -22,9 +22,10 @@ namespace NotificationServerGUI
 
             server = new NotificationServerGUI("server.ini", 0);
             server.StartListener();
-            //server.TriggerAutoPurge();
+            server.TriggerAutoPurge();
             refreshGroupsAndComputers();
             
+
             timer1.Interval = 5000;
             timer1.Start();
         }
@@ -48,22 +49,24 @@ namespace NotificationServerGUI
         private void setMessageIcons()
         {
             cmbIcon.Items.Clear();
-            cmbIcon.Items.Add("");
+            
             cmbIcon.Items.Add("Error");
             cmbIcon.Items.Add("Exclamation");
             cmbIcon.Items.Add("Hand");
             cmbIcon.Items.Add("Information");
-            //cmbIcon.Items.Add("None");
+            cmbIcon.Items.Add("None");
             cmbIcon.Items.Add("Question");
             cmbIcon.Items.Add("Stop");
             cmbIcon.Items.Add("Warning");
+
+            cmbIcon.SelectedItem = "None";
         }
 
         private void deliverMessages()
         {
             string content = txtContent.Text + "";
             string title = txtTitle.Text + "";
-            string icon = cmbIcon.SelectedItem.ToString(); 
+            string icon = cmbIcon.SelectedItem.ToString() + ""; 
 
             List<string> recipients = new List<string>();
 
@@ -160,10 +163,11 @@ namespace NotificationServerGUI
 
         private void timer1_Tick (object sender, EventArgs e)
 		{
+            //Console.WriteLine("tick");
 			if (lstComputers.SelectedItems.Count == 0 && lstGroups.SelectedItems.Count == 0) {
 				refreshGroupsAndComputers ();
 			}
-			server.PurgeMachines ();
+			//server.PurgeMachines ();
 		}
     }
 }
