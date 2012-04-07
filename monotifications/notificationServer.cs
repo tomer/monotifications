@@ -54,22 +54,42 @@ namespace monotifications
 		
 		public void PurgeMachines ()
 		{
-			DateTime minimum = DateTime.Now;
-			minimum = minimum.Subtract (TimeSpan.FromSeconds (updateInterval * 5));
-			string[] m = list_machines ();
-			foreach (string key in m) {
-				string tmp = machines [key] ["lastseen"];
-				tmp = tmp.Trim ();
-				DateTime lastseen = DateTime.Parse (tmp);
-				//if (lastseen < DateTime.Now )
-				Console.WriteLine ("{0} || {1} || {2} || {3} || {4}", key, lastseen, minimum, lastseen.CompareTo (minimum), minimum.CompareTo (lastseen));
-				//if (DateTime.Compare (minimum, lastseen) < 0)
-				if (lastseen.CompareTo (minimum) < 0) 
-					UnregisterClient (key);
-			}
-			
+
+            if (machines.Count() != 0) {
+                DateTime minimum = DateTime.Now;
+			    minimum = minimum.Subtract (TimeSpan.FromSeconds (updateInterval * 5));
+                string[] m = list_machines();
+                foreach (string key in m)
+                {
+                    string tmp = machines[key]["lastseen"];
+                    tmp = tmp.Trim();
+                    DateTime lastseen = DateTime.Parse(tmp);
+                    
+                    switch (doubleCompare(lastseen.ToBinary(), minimum.ToBinary()))
+                    {
+                        case -1: //lastseen is earlier
+                            UnregisterClient(key);
+                            break;
+                        case 1: //lastseen is later 
+                            break;
+                        case 0: //lastseen and minimum are equal 
+                            break;
+                        default: // Should never happen!
+                            break;
+                    }
+                }
+            }
 		}
-		
+
+        private int doubleCompare(double a, double b)
+        { // Helper method because the DateTime.Compare method doesn't work well to me (issue #2)
+            double diff = a - b;
+            if (diff > 0) return 1;
+            else if (diff < 0) return -1;
+            else return 0;
+        }
+
+
 		private Timer autoPurgeScheduler;
 		public void TriggerAutoPurge ()
 		{
