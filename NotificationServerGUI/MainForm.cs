@@ -158,7 +158,7 @@ namespace NotificationServerGUI
 			txtTitle.Text = "";
 			lstComputers.SelectedItems.Clear ();
 			lstGroups.SelectedItems.Clear ();
-			cmbIcon.SelectedIndex = 0;
+			cmbIcon.SelectedItem = "None";
 		}
 
         private void timer1_Tick (object sender, EventArgs e)
