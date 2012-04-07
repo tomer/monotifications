@@ -95,15 +95,19 @@ namespace monotifications
 		
 		public void TriggerSave ()
 		{
-			if (saveScheduled == false) {
-				saveScheduled = true;
-				saveScheduler = new Timer (SaveTrigger, null, 1000 * 25, Timeout.Infinite);
-			}
+            if (saveScheduled == false)
+            {
+                saveScheduled = true;
+                Console.WriteLine("Triggering file save (" + this.filename + ")");
+                saveScheduler = new Timer(SaveTrigger, null, 1000 * 25, Timeout.Infinite);
+            }
+            else Console.WriteLine(this.filename + " save already triggered.");
 		}
 		
 		private void SaveTrigger (object state)
 		{
 			saveScheduled = false;
+            Console.WriteLine("Saving triggered file " + this.filename);
 			this.Save();
 		}
 		
