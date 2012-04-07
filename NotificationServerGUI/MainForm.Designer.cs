@@ -170,6 +170,7 @@
             // 
             // cmbIcon
             // 
+            this.cmbIcon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIcon.FormattingEnabled = true;
             this.cmbIcon.Location = new System.Drawing.Point(84, 19);
             this.cmbIcon.Name = "cmbIcon";
