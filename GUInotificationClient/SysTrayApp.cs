@@ -21,7 +21,9 @@ namespace GUInotificationClient
             trayMenu = new ContextMenu();
 #if DEBUG
             trayMenu.MenuItems.Add("Register (DEBUG)", onDebugRegister);
-            trayMenu.MenuItems.Add("Unregister (DEBUG)", OnDebugUnregister);
+            trayMenu.MenuItems.Add("Unregister (DEBUG)", onDebugUnregister);
+            trayMenu.MenuItems.Add("-");
+            trayMenu.MenuItems.Add("Add dummy client", onDebugAddDummy);
             trayMenu.MenuItems.Add("-");
 #endif
             trayMenu.MenuItems.Add("About", onAbout);
@@ -68,9 +70,22 @@ namespace GUInotificationClient
             client.registerOnServer();
         }
 
-        private void OnDebugUnregister(object sender, EventArgs e)
+        private void onDebugUnregister(object sender, EventArgs e)
         {
             client.unregisterOnServer();
+        }
+
+        private void onDebugAddDummy(object sender, EventArgs e)
+        {
+            System.Random rnd = new Random();
+            monotifications.Message m = new monotifications.Message();
+            m["content"] = "register";
+            m["type"] = "-1";
+            m["myPort"] = (rnd.Next(1000) + 1000).ToString();
+            m["myAddress"] = "0.0." + rnd.Next(250) +"."+ rnd.Next(250);
+            m["subscription"] = "Zombies";
+            m["hostname"] = "Zombie-"+ rnd.Next(32468);
+            client.network.talker(client.serverAddress, client.serverPort, m.ToString());
         }
 #endif
 
@@ -83,7 +98,11 @@ namespace GUInotificationClient
 
         private void onAbout(object sender, EventArgs e)
         {
-            string about = "Notification Agent v1.0\n\n (C) 2012\n\tRoman Braverman\n\tTomer Cohen";
+            string about = "Notification Agent v1.0\n";
+#if DEBUG
+            about = about + "*** Debugging build ***\n";
+#endif
+            about = about + "\n (C) 2012\n\tRoman Braverman\n\tTomer Cohen";
 
             System.Windows.Forms.MessageBox.Show(about, "Notification agent");
         }
